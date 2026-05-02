@@ -1,1301 +1,2297 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Alok Kumar Rathaur — Senior iOS Developer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alok Kumar Rathaur — Senior iOS Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-<style>
-/* ─── RESET & BASE ─────────────────────────────────────────── */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; font-size: 16px; }
+  <style>
+    /* ─── RESET & BASE ─────────────────────────────────────────── */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-:root {
-  --bg:         #080c14;
-  --bg2:        #0d1424;
-  --bg3:        #111a2e;
-  --surface:    #141d30;
-  --surface2:   #1a2540;
-  --border:     rgba(99, 179, 237, 0.12);
-  --border2:    rgba(99, 179, 237, 0.22);
-  --accent:     #4f9cf9;
-  --accent2:    #7b68ee;
-  --accent3:    #00d4aa;
-  --text:       #e8edf5;
-  --text2:      #8fa3c0;
-  --text3:      #566880;
-  --glow:       rgba(79, 156, 249, 0.18);
-  --glow2:      rgba(123, 104, 238, 0.18);
-  --radius:     14px;
-  --radius-lg:  22px;
-}
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 400;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
+    :root {
+      --bg: #080c14;
+      --bg2: #0d1424;
+      --bg3: #111a2e;
+      --surface: #141d30;
+      --surface2: #1a2540;
+      --border: rgba(99, 179, 237, 0.12);
+      --border2: rgba(99, 179, 237, 0.22);
+      --accent: #4f9cf9;
+      --accent2: #7b68ee;
+      --accent3: #00d4aa;
+      --text: #e8edf5;
+      --text2: #8fa3c0;
+      --text3: #566880;
+      --glow: rgba(79, 156, 249, 0.18);
+      --glow2: rgba(123, 104, 238, 0.18);
+      --radius: 14px;
+      --radius-lg: 22px;
+    }
 
-/* ─── SCROLLBAR ─────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-/* ─── NOISE OVERLAY ─────────────────────────────────────────── */
-body::before {
-  content: '';
-  position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-  opacity: 0.5;
-}
+    /* ─── SCROLLBAR ─────────────────────────────────────────────── */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
 
-/* ─── HEADER / NAV ──────────────────────────────────────────── */
-header {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 0 2rem;
-  height: 64px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: rgba(8,12,20,0.8);
-  backdrop-filter: blur(20px) saturate(1.4);
-  border-bottom: 1px solid var(--border);
-  transition: background .3s;
-}
-.nav-logo {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: -.01em;
-  color: var(--text);
-  text-decoration: none;
-  display: flex; align-items: center; gap: .5rem;
-}
-.nav-logo span {
-  display: inline-block; width: 8px; height: 8px; border-radius: 50%;
-  background: var(--accent); box-shadow: 0 0 8px var(--accent);
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-@keyframes pulse-dot {
-  0%,100% { opacity: 1; transform: scale(1); }
-  50% { opacity: .5; transform: scale(1.4); }
-}
-nav { display: flex; gap: .25rem; align-items: center; }
-nav a {
-  color: var(--text2); text-decoration: none; font-size: .82rem; font-weight: 500;
-  letter-spacing: .04em; text-transform: uppercase;
-  padding: .4rem .75rem; border-radius: 8px;
-  transition: color .2s, background .2s;
-}
-nav a:hover { color: var(--accent); background: rgba(79,156,249,.08); }
-.nav-cta {
-  margin-left: .5rem;
-  padding: .4rem 1rem !important;
-  background: var(--accent) !important;
-  color: #fff !important;
-  border-radius: 8px !important;
-  font-weight: 600 !important;
-}
-.nav-cta:hover { background: #6aaeff !important; }
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
 
-/* hamburger */
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: .5rem; }
-.hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: .3s; }
-.mobile-nav {
-  display: none; position: fixed; top: 64px; left: 0; right: 0;
-  background: var(--bg2); border-bottom: 1px solid var(--border);
-  padding: 1rem 2rem 1.5rem; flex-direction: column; gap: .25rem; z-index: 99;
-}
-.mobile-nav a { color: var(--text2); text-decoration: none; padding: .6rem 0; font-size: .9rem; border-bottom: 1px solid var(--border); }
-.mobile-nav a:last-child { border-bottom: none; }
-.mobile-nav.open { display: flex; }
+    ::-webkit-scrollbar-thumb {
+      background: var(--surface2);
+      border-radius: 3px;
+    }
 
-/* ─── HERO ──────────────────────────────────────────────────── */
-.hero {
-  min-height: 100vh;
-  display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
-  padding: 80px 2rem 4rem;
-}
-.hero-bg {
-  position: absolute; inset: 0; z-index: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 60% 40%, rgba(79,156,249,.13) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 50% at 20% 70%, rgba(123,104,238,.10) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 40% at 80% 80%, rgba(0,212,170,.06) 0%, transparent 70%);
-}
-/* floating orbs */
-.orb {
-  position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none;
-  animation: float-orb 8s ease-in-out infinite;
-}
-.orb1 { width: 500px; height: 500px; background: rgba(79,156,249,.07); top: 5%; right: -10%; animation-delay: 0s; }
-.orb2 { width: 380px; height: 380px; background: rgba(123,104,238,.08); bottom: 10%; left: -8%; animation-delay: -3s; }
-.orb3 { width: 250px; height: 250px; background: rgba(0,212,170,.05); top: 40%; left: 30%; animation-delay: -5s; }
-@keyframes float-orb {
-  0%,100% { transform: translate(0,0) scale(1); }
-  33% { transform: translate(30px,-20px) scale(1.05); }
-  66% { transform: translate(-15px,15px) scale(.96); }
-}
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
 
-/* grid lines bg */
-.hero-grid {
-  position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background-image:
-    linear-gradient(rgba(79,156,249,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(79,156,249,.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
-}
+    /* ─── NOISE OVERLAY ─────────────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      opacity: 0.5;
+    }
 
-.hero-content {
-  position: relative; z-index: 1; max-width: 900px; text-align: center;
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: .5rem;
-  background: rgba(79,156,249,.1); border: 1px solid rgba(79,156,249,.25);
-  color: var(--accent); font-size: .78rem; font-weight: 500;
-  letter-spacing: .1em; text-transform: uppercase;
-  padding: .4rem 1rem; border-radius: 100px; margin-bottom: 1.75rem;
-  animation: fade-up .6s ease both;
-}
-.hero-badge i { font-size: .7rem; }
-.hero-name {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(2.8rem, 7vw, 5.5rem);
-  font-weight: 800; line-height: 1.0;
-  letter-spacing: -.03em;
-  margin-bottom: .5rem;
-  animation: fade-up .6s ease .1s both;
-}
-.hero-name .line2 {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  display: block;
-}
-.hero-title {
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
-  font-weight: 300; color: var(--text2);
-  margin-bottom: .75rem; letter-spacing: .01em;
-  animation: fade-up .6s ease .2s both;
-}
-.hero-title strong { color: var(--accent3); font-weight: 500; }
-.hero-location {
-  display: flex; align-items: center; justify-content: center; gap: .5rem;
-  color: var(--text3); font-size: .85rem; font-family: 'DM Mono', monospace;
-  margin-bottom: 2.5rem;
-  animation: fade-up .6s ease .3s both;
-}
-.hero-location i { color: var(--accent); font-size: .75rem; }
+    /* ─── HEADER / NAV ──────────────────────────────────────────── */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(8, 12, 20, 0.8);
+      backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+      transition: background .3s;
+    }
 
-.hero-actions {
-  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
-  animation: fade-up .6s ease .4s both;
-}
-.btn {
-  display: inline-flex; align-items: center; gap: .5rem;
-  padding: .75rem 1.75rem; border-radius: 10px;
-  font-size: .9rem; font-weight: 600; text-decoration: none;
-  transition: all .25s ease; cursor: pointer; border: none;
-}
-.btn-primary {
-  background: var(--accent); color: #fff;
-  box-shadow: 0 4px 24px rgba(79,156,249,.35);
-}
-.btn-primary:hover { background: #6aaeff; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(79,156,249,.45); }
-.btn-secondary {
-  background: transparent; color: var(--text);
-  border: 1px solid var(--border2);
-}
-.btn-secondary:hover { background: var(--surface); border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -.01em;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
 
-.hero-scroll {
-  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: .5rem;
-  color: var(--text3); font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
-  animation: fade-up .6s ease .8s both;
-}
-.scroll-line {
-  width: 1px; height: 48px;
-  background: linear-gradient(to bottom, var(--accent), transparent);
-  animation: scroll-anim 1.8s ease-in-out infinite;
-}
-@keyframes scroll-anim {
-  0% { transform: scaleY(0); transform-origin: top; }
-  50% { transform: scaleY(1); transform-origin: top; }
-  51% { transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
-}
+    .nav-logo span {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
 
-/* ─── STATS ─────────────────────────────────────────────────── */
-.stats {
-  padding: 4rem 2rem;
-  position: relative;
-}
-.stats::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to bottom, var(--bg) 0%, var(--bg2) 50%, var(--bg) 100%);
-}
-.stats-inner {
-  position: relative; max-width: 1000px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
-  background: var(--border); border-radius: var(--radius-lg); overflow: hidden;
-}
-.stat-item {
-  background: var(--surface);
-  padding: 2.5rem 1.5rem;
-  text-align: center;
-  position: relative; overflow: hidden;
-  transition: background .3s;
-}
-.stat-item::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, var(--glow) 0%, transparent 60%);
-  opacity: 0; transition: opacity .3s;
-}
-.stat-item:hover { background: var(--surface2); }
-.stat-item:hover::before { opacity: 1; }
-.stat-num {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(2rem, 4vw, 3rem); font-weight: 800;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  display: block; line-height: 1;
-}
-.stat-label {
-  color: var(--text2); font-size: .82rem; font-weight: 500;
-  letter-spacing: .06em; text-transform: uppercase; margin-top: .5rem; display: block;
-}
+    @keyframes pulse-dot {
 
-/* ─── SECTION BASE ──────────────────────────────────────────── */
-section { padding: 6rem 2rem; position: relative; }
-.container { max-width: 1100px; margin: 0 auto; }
-.section-label {
-  display: inline-flex; align-items: center; gap: .6rem;
-  font-family: 'DM Mono', monospace;
-  font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 1rem;
-}
-.section-label::before {
-  content: ''; display: block; width: 28px; height: 1px; background: var(--accent);
-}
-.section-title {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 800; letter-spacing: -.02em; margin-bottom: 1rem;
-  line-height: 1.1;
-}
-.section-title em { font-style: normal; color: var(--accent); }
-.section-sub {
-  color: var(--text2); max-width: 560px; line-height: 1.75; margin-bottom: 3.5rem;
-}
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
 
-/* ─── ABOUT / SKILLS ────────────────────────────────────────── */
-.about-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
-}
-.about-text p {
-  color: var(--text2); line-height: 1.85; margin-bottom: 1.25rem; font-size: .95rem;
-}
-.about-text p strong { color: var(--text); font-weight: 500; }
+      50% {
+        opacity: .5;
+        transform: scale(1.4);
+      }
+    }
 
-.skills-grid { display: flex; flex-direction: column; gap: 2rem; }
-.skill-group-label {
-  font-size: .72rem; letter-spacing: .15em; text-transform: uppercase;
-  color: var(--text3); font-family: 'DM Mono', monospace;
-  margin-bottom: .75rem;
-}
-.skill-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
-.skill-tag {
-  font-size: .78rem; font-weight: 500;
-  padding: .35rem .85rem; border-radius: 100px;
-  border: 1px solid var(--border); color: var(--text2);
-  background: var(--surface);
-  transition: all .2s ease; cursor: default;
-}
-.skill-tag:hover { color: var(--accent); border-color: var(--accent); background: rgba(79,156,249,.08); }
-.skill-tag.highlight { color: var(--accent3); border-color: rgba(0,212,170,.3); background: rgba(0,212,170,.06); }
+    nav {
+      display: flex;
+      gap: .25rem;
+      align-items: center;
+    }
 
-/* ─── EXPERIENCE / TIMELINE ─────────────────────────────────── */
-#experience { background: var(--bg2); }
-.timeline { position: relative; display: flex; flex-direction: column; gap: 0; }
-.timeline::before {
-  content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px;
-  background: linear-gradient(to bottom, var(--accent), var(--accent2), var(--accent3));
-  opacity: .3;
-}
-.timeline-item {
-  display: grid; grid-template-columns: 36px 1fr; gap: 0 1.75rem;
-  padding-bottom: 3.5rem; position: relative;
-}
-.timeline-item:last-child { padding-bottom: 0; }
-.timeline-dot {
-  width: 15px; height: 15px; border-radius: 50%; margin-top: 4px; flex-shrink: 0;
-  border: 2px solid var(--accent); background: var(--bg2);
-  box-shadow: 0 0 12px rgba(79,156,249,.4);
-  transition: transform .3s, box-shadow .3s;
-  position: relative; z-index: 1;
-}
-.timeline-item:hover .timeline-dot {
-  transform: scale(1.3); box-shadow: 0 0 20px rgba(79,156,249,.6);
-}
-.timeline-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 2rem 2.25rem;
-  transition: border-color .3s, transform .3s, box-shadow .3s;
-  position: relative; overflow: hidden;
-}
-.timeline-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  opacity: 0; transition: opacity .3s;
-}
-.timeline-item:hover .timeline-card {
-  border-color: var(--border2); transform: translateX(4px);
-  box-shadow: 0 8px 40px rgba(0,0,0,.3);
-}
-.timeline-item:hover .timeline-card::before { opacity: 1; }
+    nav a {
+      color: var(--text2);
+      text-decoration: none;
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: .4rem .75rem;
+      border-radius: 8px;
+      transition: color .2s, background .2s;
+    }
 
-.tc-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: .75rem; margin-bottom: .25rem; }
-.tc-role { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--text); }
-.tc-period {
-  font-family: 'DM Mono', monospace; font-size: .72rem;
-  color: var(--accent3); background: rgba(0,212,170,.08);
-  border: 1px solid rgba(0,212,170,.2); padding: .3rem .75rem; border-radius: 100px;
-  white-space: nowrap;
-}
-.tc-company { color: var(--accent); font-size: .9rem; font-weight: 500; margin-bottom: 1.25rem; }
+    nav a:hover {
+      color: var(--accent);
+      background: rgba(79, 156, 249, .08);
+    }
 
-/* app store chip inside experience */
-.app-chip {
-  display: inline-flex; align-items: center; gap: .5rem;
-  background: rgba(0,0,0,.3); border: 1px solid var(--border2);
-  border-radius: 10px; padding: .4rem 1rem .4rem .5rem;
-  text-decoration: none; color: var(--text);
-  font-size: .78rem; font-weight: 500;
-  transition: all .2s; margin-bottom: 1.25rem; margin-right: .5rem;
-}
-.app-chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
-.app-icon {
-  width: 28px; height: 28px; border-radius: 7px;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  display: flex; align-items: center; justify-content: center;
-  font-size: .7rem; color: #fff;
-}
+    .nav-cta {
+      margin-left: .5rem;
+      padding: .4rem 1rem !important;
+      background: var(--accent) !important;
+      color: #fff !important;
+      border-radius: 8px !important;
+      font-weight: 600 !important;
+    }
 
-.tc-bullets { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
-.tc-bullets li {
-  display: flex; gap: .75rem; align-items: flex-start;
-  color: var(--text2); font-size: .88rem; line-height: 1.65;
-}
-.tc-bullets li::before {
-  content: ''; display: block; width: 4px; height: 4px; border-radius: 50%;
-  background: var(--accent); margin-top: .58rem; flex-shrink: 0;
-}
-.tc-bullets li strong { color: var(--text); font-weight: 500; }
+    .nav-cta:hover {
+      background: #6aaeff !important;
+    }
 
-/* ─── PROJECTS ──────────────────────────────────────────────── */
-.projects-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1.5rem;
-}
-.project-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg); overflow: hidden;
-  transition: all .3s ease; position: relative;
-  display: flex; flex-direction: column;
-}
-.project-card:hover { border-color: var(--border2); transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,.4); }
-.project-gradient {
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
-}
-.project-body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; }
-.project-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
-.project-app-icon {
-  width: 52px; height: 52px; border-radius: 13px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem; flex-shrink: 0;
-  box-shadow: 0 4px 16px rgba(0,0,0,.3);
-}
-.project-name { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; }
-.project-company { color: var(--text3); font-size: .78rem; margin-top: .15rem; }
-.project-desc { color: var(--text2); font-size: .86rem; line-height: 1.7; flex: 1; margin-bottom: 1.5rem; }
-.project-metrics {
-  display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.5rem;
-}
-.metric-badge {
-  font-size: .72rem; font-weight: 600; padding: .3rem .75rem;
-  border-radius: 100px; background: rgba(79,156,249,.1);
-  border: 1px solid rgba(79,156,249,.2); color: var(--accent);
-}
-.metric-badge.green { background: rgba(0,212,170,.1); border-color: rgba(0,212,170,.2); color: var(--accent3); }
-.metric-badge.purple { background: rgba(123,104,238,.1); border-color: rgba(123,104,238,.25); color: var(--accent2); }
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: .5rem;
+    }
 
-.app-store-btn {
-  display: flex; align-items: center; justify-content: center; gap: .6rem;
-  background: var(--bg); border: 1px solid var(--border2);
-  color: var(--text); text-decoration: none; padding: .7rem 1.25rem;
-  border-radius: 10px; font-size: .82rem; font-weight: 600;
-  transition: all .25s; width: 100%;
-}
-.app-store-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; transform: none; }
-.app-store-btn i { font-size: 1rem; }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: .3s;
+    }
 
-/* ─── SKILLS SECTION ────────────────────────────────────────── */
-#skills { background: var(--bg2); }
-.skills-big-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
-}
-.skill-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: 1.75rem;
-  transition: border-color .3s, transform .3s;
-}
-.skill-card:hover { border-color: var(--border2); transform: translateY(-3px); }
-.skill-card-icon {
-  width: 44px; height: 44px; border-radius: 11px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem; margin-bottom: 1.1rem;
-}
-.skill-card-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: .85rem; }
-.skill-card-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-.sct {
-  font-size: .75rem; padding: .28rem .7rem; border-radius: 6px;
-  background: rgba(255,255,255,.04); color: var(--text2); border: 1px solid var(--border);
-}
-/* app img icon inside chip / card */
-.app-icon img, .project-app-icon img {
-  width: 100%; height: 100%; object-fit: cover;
-  border-radius: inherit;
-  display: block;
-}
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem 1.5rem;
+      flex-direction: column;
+      gap: .25rem;
+      z-index: 99;
+    }
 
-/* bar style */
-.skill-bar-row { margin-bottom: .9rem; }
-.skill-bar-label { display: flex; justify-content: space-between; margin-bottom: .4rem; font-size: .8rem; color: var(--text2); }
-.skill-bar-label span:last-child { color: var(--accent); font-family: 'DM Mono', monospace; }
-.skill-bar-track { height: 4px; background: rgba(255,255,255,.06); border-radius: 2px; overflow: hidden; }
-.skill-bar-fill {
-  height: 100%; border-radius: 2px; width: 0%;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  transition: width 1.2s ease;
-}
+    .mobile-nav a {
+      color: var(--text2);
+      text-decoration: none;
+      padding: .6rem 0;
+      font-size: .9rem;
+      border-bottom: 1px solid var(--border);
+    }
 
-/* ─── EDUCATION ─────────────────────────────────────────────── */
-.edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-.edu-card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
-  padding: 2rem; transition: all .3s; position: relative; overflow: hidden;
-}
-.edu-card:hover { border-color: var(--border2); transform: translateY(-3px); }
-.edu-card::after {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--accent2), var(--accent3)); opacity: .5;
-}
-.edu-icon { font-size: 1.8rem; margin-bottom: 1rem; }
-.edu-degree { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: .3rem; }
-.edu-inst { color: var(--accent); font-size: .88rem; font-weight: 500; margin-bottom: .75rem; }
-.edu-meta { display: flex; gap: .75rem; flex-wrap: wrap; }
-.edu-badge {
-  font-family: 'DM Mono', monospace; font-size: .72rem;
-  padding: .25rem .65rem; border-radius: 6px;
-  background: var(--bg); border: 1px solid var(--border); color: var(--text3);
-}
+    .mobile-nav a:last-child {
+      border-bottom: none;
+    }
 
-/* ─── CONTACT ───────────────────────────────────────────────── */
-#contact { background: var(--bg2); }
-.contact-inner {
-  max-width: 720px; margin: 0 auto; text-align: center;
-}
-.contact-desc { color: var(--text2); line-height: 1.8; margin-bottom: 2.5rem; }
-.contact-cards {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2.5rem;
-}
-.contact-card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 1.5rem 1rem; text-decoration: none; color: var(--text);
-  transition: all .25s; display: flex; flex-direction: column; align-items: center; gap: .6rem;
-}
-.contact-card:hover { border-color: var(--accent); background: rgba(79,156,249,.06); transform: translateY(-3px); }
-.contact-card i { font-size: 1.4rem; color: var(--accent); }
-.contact-card .cc-label { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text3); }
-.contact-card .cc-val { font-size: .85rem; color: var(--text2); word-break: break-all; }
-.social-row { display: flex; justify-content: center; gap: 1rem; }
-.social-btn {
-  width: 48px; height: 48px; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--surface); border: 1px solid var(--border);
-  color: var(--text2); text-decoration: none; font-size: 1.1rem;
-  transition: all .25s;
-}
-.social-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; transform: translateY(-3px); }
+    .mobile-nav.open {
+      display: flex;
+    }
 
-/* ─── FOOTER ────────────────────────────────────────────────── */
-footer {
-  padding: 2rem; text-align: center;
-  border-top: 1px solid var(--border);
-  color: var(--text3); font-size: .8rem;
-  font-family: 'DM Mono', monospace;
-}
-footer a { color: var(--accent); text-decoration: none; }
-footer a:hover { text-decoration: underline; }
+    /* ─── HERO ──────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 2rem 4rem;
+    }
 
-/* ─── ANIMATIONS ────────────────────────────────────────────── */
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.reveal {
-  opacity: 0; transform: translateY(30px);
-  transition: opacity .7s ease, transform .7s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: .1s; }
-.reveal-delay-2 { transition-delay: .2s; }
-.reveal-delay-3 { transition-delay: .3s; }
-.reveal-delay-4 { transition-delay: .4s; }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(79, 156, 249, .13) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 20% 70%, rgba(123, 104, 238, .10) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(0, 212, 170, .06) 0%, transparent 70%);
+    }
 
-/* ─── RESPONSIVE ────────────────────────────────────────────── */
-@media (max-width: 900px) {
-  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .stats-inner { grid-template-columns: repeat(2, 1fr); }
-  nav { display: none; }
-  .hamburger { display: flex; }
-  .edu-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 640px) {
-  section { padding: 4rem 1.25rem; }
-  .stats-inner { grid-template-columns: repeat(2,1fr); }
-  .contact-cards { grid-template-columns: 1fr; }
-  .timeline::before { left: 6px; }
-  .timeline-card { padding: 1.25rem 1.5rem; }
-  .hero-actions { flex-direction: column; align-items: center; }
-}
-</style>
+    /* floating orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+      animation: float-orb 8s ease-in-out infinite;
+    }
+
+    .orb1 {
+      width: 500px;
+      height: 500px;
+      background: rgba(79, 156, 249, .07);
+      top: 5%;
+      right: -10%;
+      animation-delay: 0s;
+    }
+
+    .orb2 {
+      width: 380px;
+      height: 380px;
+      background: rgba(123, 104, 238, .08);
+      bottom: 10%;
+      left: -8%;
+      animation-delay: -3s;
+    }
+
+    .orb3 {
+      width: 250px;
+      height: 250px;
+      background: rgba(0, 212, 170, .05);
+      top: 40%;
+      left: 30%;
+      animation-delay: -5s;
+    }
+
+    @keyframes float-orb {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      33% {
+        transform: translate(30px, -20px) scale(1.05);
+      }
+
+      66% {
+        transform: translate(-15px, 15px) scale(.96);
+      }
+    }
+
+    /* grid lines bg */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(79, 156, 249, .04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79, 156, 249, .04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(79, 156, 249, .1);
+      border: 1px solid rgba(79, 156, 249, .25);
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .4rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.75rem;
+      animation: fade-up .6s ease both;
+    }
+
+    .hero-badge i {
+      font-size: .7rem;
+    }
+
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -.03em;
+      margin-bottom: .5rem;
+      animation: fade-up .6s ease .1s both;
+    }
+
+    .hero-name .line2 {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+
+    .hero-title {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-weight: 300;
+      color: var(--text2);
+      margin-bottom: .75rem;
+      letter-spacing: .01em;
+      animation: fade-up .6s ease .2s both;
+    }
+
+    .hero-title strong {
+      color: var(--accent3);
+      font-weight: 500;
+    }
+
+    .hero-location {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      color: var(--text3);
+      font-size: .85rem;
+      font-family: 'DM Mono', monospace;
+      margin-bottom: 2.5rem;
+      animation: fade-up .6s ease .3s both;
+    }
+
+    .hero-location i {
+      color: var(--accent);
+      font-size: .75rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fade-up .6s ease .4s both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.75rem;
+      border-radius: 10px;
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .25s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 24px rgba(79, 156, 249, .35);
+    }
+
+    .btn-primary:hover {
+      background: #6aaeff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(79, 156, 249, .45);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border2);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      color: var(--text3);
+      font-size: .7rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      animation: fade-up .6s ease .8s both;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scroll-anim 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scroll-anim {
+      0% {
+        transform: scaleY(0);
+        transform-origin: top;
+      }
+
+      50% {
+        transform: scaleY(1);
+        transform-origin: top;
+      }
+
+      51% {
+        transform: scaleY(1);
+        transform-origin: bottom;
+      }
+
+      100% {
+        transform: scaleY(0);
+        transform-origin: bottom;
+      }
+    }
+
+    /* ─── STATS ─────────────────────────────────────────────────── */
+    .stats {
+      padding: 4rem 2rem;
+      position: relative;
+    }
+
+    .stats::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, var(--bg) 0%, var(--bg2) 50%, var(--bg) 100%);
+    }
+
+    .stats-inner {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .stat-item {
+      background: var(--surface);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: background .3s;
+    }
+
+    .stat-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .stat-item:hover {
+      background: var(--surface2);
+    }
+
+    .stat-item:hover::before {
+      opacity: 1;
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-label {
+      color: var(--text2);
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-top: .5rem;
+      display: block;
+    }
+
+    /* ─── SECTION BASE ──────────────────────────────────────────── */
+    section {
+      padding: 6rem 2rem;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+
+    .section-title em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .section-sub {
+      color: var(--text2);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ─── ABOUT / SKILLS ────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text2);
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+      font-size: .95rem;
+    }
+
+    .about-text p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .skill-group-label {
+      font-size: .72rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--text3);
+      font-family: 'DM Mono', monospace;
+      margin-bottom: .75rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .skill-tag {
+      font-size: .78rem;
+      font-weight: 500;
+      padding: .35rem .85rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      color: var(--text2);
+      background: var(--surface);
+      transition: all .2s ease;
+      cursor: default;
+    }
+
+    .skill-tag:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(79, 156, 249, .08);
+    }
+
+    .skill-tag.highlight {
+      color: var(--accent3);
+      border-color: rgba(0, 212, 170, .3);
+      background: rgba(0, 212, 170, .06);
+    }
+
+    /* ─── EXPERIENCE / TIMELINE ─────────────────────────────────── */
+    #experience {
+      background: var(--bg2);
+    }
+
+    .timeline {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2), var(--accent3));
+      opacity: .3;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 0 1.75rem;
+      padding-bottom: 3.5rem;
+      position: relative;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      margin-top: 4px;
+      flex-shrink: 0;
+      border: 2px solid var(--accent);
+      background: var(--bg2);
+      box-shadow: 0 0 12px rgba(79, 156, 249, .4);
+      transition: transform .3s, box-shadow .3s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-item:hover .timeline-dot {
+      transform: scale(1.3);
+      box-shadow: 0 0 20px rgba(79, 156, 249, .6);
+    }
+
+    .timeline-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.25rem;
+      transition: border-color .3s, transform .3s, box-shadow .3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .timeline-item:hover .timeline-card {
+      border-color: var(--border2);
+      transform: translateX(4px);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, .3);
+    }
+
+    .timeline-item:hover .timeline-card::before {
+      opacity: 1;
+    }
+
+    .tc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-bottom: .25rem;
+    }
+
+    .tc-role {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .tc-period {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      color: var(--accent3);
+      background: rgba(0, 212, 170, .08);
+      border: 1px solid rgba(0, 212, 170, .2);
+      padding: .3rem .75rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .tc-company {
+      color: var(--accent);
+      font-size: .9rem;
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+    }
+
+    /* app store chip inside experience */
+    .app-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(0, 0, 0, .3);
+      border: 1px solid var(--border2);
+      border-radius: 10px;
+      padding: .4rem 1rem .4rem .5rem;
+      text-decoration: none;
+      color: var(--text);
+      font-size: .78rem;
+      font-weight: 500;
+      transition: all .2s;
+      margin-bottom: 1.25rem;
+      margin-right: .5rem;
+    }
+
+    .app-chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .app-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7rem;
+      color: #fff;
+    }
+
+    .tc-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+
+    .tc-bullets li {
+      position: relative;
+      padding-left: 1rem;
+      color: var(--text2);
+      font-size: .88rem;
+      line-height: 1.65;
+    }
+
+    .tc-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: .65rem;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .tc-bullets li strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ─── PROJECTS ──────────────────────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all .3s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: var(--border2);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .4);
+    }
+
+    .project-gradient {
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+    }
+
+    .project-body {
+      padding: 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-app-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .3);
+    }
+
+    .project-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .project-company {
+      color: var(--text3);
+      font-size: .78rem;
+      margin-top: .15rem;
+    }
+
+    .project-desc {
+      color: var(--text2);
+      font-size: .86rem;
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .metric-badge {
+      font-size: .72rem;
+      font-weight: 600;
+      padding: .3rem .75rem;
+      border-radius: 100px;
+      background: rgba(79, 156, 249, .1);
+      border: 1px solid rgba(79, 156, 249, .2);
+      color: var(--accent);
+    }
+
+    .metric-badge.green {
+      background: rgba(0, 212, 170, .1);
+      border-color: rgba(0, 212, 170, .2);
+      color: var(--accent3);
+    }
+
+    .metric-badge.purple {
+      background: rgba(123, 104, 238, .1);
+      border-color: rgba(123, 104, 238, .25);
+      color: var(--accent2);
+    }
+
+    .app-store-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      background: var(--bg);
+      border: 1px solid var(--border2);
+      color: var(--text);
+      text-decoration: none;
+      padding: .7rem 1.25rem;
+      border-radius: 10px;
+      font-size: .82rem;
+      font-weight: 600;
+      transition: all .25s;
+      width: 100%;
+    }
+
+    .app-store-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      transform: none;
+    }
+
+    .app-store-btn i {
+      font-size: 1rem;
+    }
+
+    /* ─── SKILLS SECTION ────────────────────────────────────────── */
+    #skills {
+      background: var(--bg2);
+    }
+
+    .skills-big-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: border-color .3s, transform .3s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--border2);
+      transform: translateY(-3px);
+    }
+
+    .skill-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .skill-card-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: .85rem;
+    }
+
+    .skill-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+
+    .sct {
+      font-size: .75rem;
+      padding: .28rem .7rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, .04);
+      color: var(--text2);
+      border: 1px solid var(--border);
+    }
+
+    /* app img icon inside chip / card */
+    .app-icon img,
+    .project-app-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      display: block;
+    }
+
+    /* bar style */
+    .skill-bar-row {
+      margin-bottom: .9rem;
+    }
+
+    .skill-bar-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: .4rem;
+      font-size: .8rem;
+      color: var(--text2);
+    }
+
+    .skill-bar-label span:last-child {
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .skill-bar-track {
+      height: 4px;
+      background: rgba(255, 255, 255, .06);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transition: width 1.2s ease;
+    }
+
+    /* ─── EDUCATION ─────────────────────────────────────────────── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: all .3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .edu-card:hover {
+      border-color: var(--border2);
+      transform: translateY(-3px);
+    }
+
+    .edu-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent2), var(--accent3));
+      opacity: .5;
+    }
+
+    .edu-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .edu-degree {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: .3rem;
+    }
+
+    .edu-inst {
+      color: var(--accent);
+      font-size: .88rem;
+      font-weight: 500;
+      margin-bottom: .75rem;
+    }
+
+    .edu-meta {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
+
+    .edu-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      padding: .25rem .65rem;
+      border-radius: 6px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text3);
+    }
+
+    /* ─── CONTACT ───────────────────────────────────────────────── */
+    #contact {
+      background: var(--bg2);
+    }
+
+    .contact-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-desc {
+      color: var(--text2);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: all .25s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .6rem;
+    }
+
+    .contact-card:hover {
+      border-color: var(--accent);
+      background: rgba(79, 156, 249, .06);
+      transform: translateY(-3px);
+    }
+
+    .contact-card i {
+      font-size: 1.4rem;
+      color: var(--accent);
+    }
+
+    .contact-card .cc-label {
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--text3);
+    }
+
+    .contact-card .cc-val {
+      font-size: .85rem;
+      color: var(--text2);
+      word-break: break-all;
+    }
+
+    .social-row {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .social-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text2);
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: all .25s;
+    }
+
+    .social-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────────────── */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      color: var(--text3);
+      font-size: .8rem;
+      font-family: 'DM Mono', monospace;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ─── ANIMATIONS ────────────────────────────────────────────── */
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: .1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: .2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: .3s;
+    }
+
+    .reveal-delay-4 {
+      transition-delay: .4s;
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .stats-inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .edu-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      section {
+        padding: 4rem 1.25rem;
+      }
+
+      .stats-inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline::before {
+        left: 6px;
+      }
+
+      .timeline-card {
+        padding: 1.25rem 1.5rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- HEADER -->
-<header id="header">
-  <a href="#hero" class="nav-logo"><span></span>Alok Rathaur</a>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Apps</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact" class="nav-cta">Hire Me</a>
-  </nav>
-  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
+  <!-- HEADER -->
+  <header id="header">
+    <a href="#hero" class="nav-logo"><span></span>Alok Rathaur</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Apps</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact" class="nav-cta">Hire Me</a>
+    </nav>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#experience" onclick="toggleMenu()">Experience</a>
+    <a href="#projects" onclick="toggleMenu()">Apps</a>
+    <a href="#skills" onclick="toggleMenu()">Skills</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
   </div>
-</header>
-<div class="mobile-nav" id="mobile-nav">
-  <a href="#about" onclick="toggleMenu()">About</a>
-  <a href="#experience" onclick="toggleMenu()">Experience</a>
-  <a href="#projects" onclick="toggleMenu()">Apps</a>
-  <a href="#skills" onclick="toggleMenu()">Skills</a>
-  <a href="#contact" onclick="toggleMenu()">Contact</a>
-</div>
 
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-bg"></div>
-  <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
-  <div class="orb orb3"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-badge"><i class="fa-brands fa-apple"></i> Available for Opportunities</div>
-    <h1 class="hero-name">
-      Alok Kumar<br><span class="line2">Rathaur</span>
-    </h1>
-    <p class="hero-title">Senior iOS Developer &mdash; <strong>7+ Years</strong> Crafting Apps People Love</p>
-    <p class="hero-location">
-      <i class="fa-solid fa-location-dot"></i>
-      Mumbai, India &nbsp;&bull;&nbsp; Open to Relocate &nbsp;&bull;&nbsp; Remote
-    </p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn btn-primary"><i class="fa-brands fa-apple"></i> View My Apps</a>
-      <a href="#contact" class="btn btn-secondary"><i class="fa-regular fa-envelope"></i> Get In Touch</a>
-      <a href="mailto:alok.rathaur26@gmail.com" class="btn btn-secondary"><i class="fa-solid fa-download"></i> Download CV</a>
-    </div>
-  </div>
-  <div class="hero-scroll"><div class="scroll-line"></div>scroll</div>
-</section>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stats-inner">
-    <div class="stat-item reveal">
-      <span class="stat-num" data-target="7">0</span><span class="stat-num">+</span>
-      <span class="stat-label">Years Experience</span>
-    </div>
-    <div class="stat-item reveal reveal-delay-1">
-      <span class="stat-num">100K+</span>
-      <span class="stat-label">App Downloads</span>
-    </div>
-    <div class="stat-item reveal reveal-delay-2">
-      <span class="stat-num">4.6</span><span class="stat-num">★</span>
-      <span class="stat-label">Avg. App Rating</span>
-    </div>
-    <div class="stat-item reveal reveal-delay-3">
-      <span class="stat-num" data-target="5">0</span>
-      <span class="stat-label">Apps Published</span>
-    </div>
-  </div>
-</div>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <div class="section-label">About Me</div>
-    <h2 class="section-title">Building iOS apps that <em>perform</em></h2>
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p>I'm a <strong>Senior iOS Developer</strong> with 7+ years of IT experience and 6 years of specialised expertise in iOS application development (iOS 13–17). I build performant, clean-architecture apps that users love.</p>
-        <p>My expertise spans <strong>Swift, Objective-C, SwiftUI, UIKit, and Combine</strong>, with a deep focus on MVVM patterns, performance profiling, and scalable code that stands the test of time.</p>
-        <p>I've shipped apps with <strong>100K+ collective downloads</strong> and maintained 4.6+ star ratings on the App Store — from fintech platforms handling international money transfers, to high-traffic e-commerce apps and community platforms.</p>
-        <p>Experienced integrating <strong>Firebase, WebEngage, Branch SDK, Lottie</strong>, and payment gateways, and managing CI/CD pipelines via GitHub Actions. I'm comfortable owning the full release lifecycle end-to-end.</p>
-        <div style="margin-top:1.75rem;">
-          <a href="mailto:alok.rathaur26@gmail.com" class="btn btn-primary" style="display:inline-flex;">
-            <i class="fa-regular fa-envelope"></i> alok.rathaur26@gmail.com
-          </a>
-        </div>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fa-brands fa-apple"></i> Available for Opportunities</div>
+      <h1 class="hero-name">
+        Alok Kumar<br><span class="line2">Rathaur</span>
+      </h1>
+      <p class="hero-title">Senior iOS Developer &mdash; <strong>7+ Years</strong> Crafting Apps People Love</p>
+      <p class="hero-location">
+        <i class="fa-solid fa-location-dot"></i>
+        Mumbai, India &nbsp;&bull;&nbsp; Open to Relocate &nbsp;&bull;&nbsp; Remote
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary"><i class="fa-brands fa-apple"></i> View My Apps</a>
+        <a href="#contact" class="btn btn-secondary"><i class="fa-regular fa-envelope"></i> Get In Touch</a>
+        <a href="mailto:alok.rathaur26@gmail.com" class="btn btn-secondary"><i class="fa-solid fa-download"></i>
+          Download CV</a>
       </div>
-      <div class="skills-grid reveal reveal-delay-1">
-        <div>
-          <div class="skill-group-label">iOS Core</div>
-          <div class="skill-tags">
-            <span class="skill-tag highlight">Swift</span>
-            <span class="skill-tag highlight">SwiftUI</span>
-            <span class="skill-tag">Objective-C</span>
-            <span class="skill-tag">UIKit</span>
-            <span class="skill-tag">Combine</span>
-            <span class="skill-tag">iOS 13–17</span>
-          </div>
-        </div>
-        <div>
-          <div class="skill-group-label">Architecture</div>
-          <div class="skill-tags">
-            <span class="skill-tag highlight">MVVM</span>
-            <span class="skill-tag">MVC</span>
-            <span class="skill-tag">Clean Architecture</span>
-            <span class="skill-tag">Agile / Scrum</span>
-          </div>
-        </div>
-        <div>
-          <div class="skill-group-label">SDKs & Tools</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Firebase</span>
-            <span class="skill-tag">Crashlytics</span>
-            <span class="skill-tag">WebEngage</span>
-            <span class="skill-tag">Branch SDK</span>
-            <span class="skill-tag highlight">Alamofire</span>
-            <span class="skill-tag">Lottie</span>
-            <span class="skill-tag">CocoaPods</span>
-            <span class="skill-tag">SPM</span>
-          </div>
-        </div>
-        <div>
-          <div class="skill-group-label">Testing & CI/CD</div>
-          <div class="skill-tags">
-            <span class="skill-tag">XCTest</span>
-            <span class="skill-tag">TDD</span>
-            <span class="skill-tag">Instruments</span>
-            <span class="skill-tag highlight">GitHub Actions</span>
-            <span class="skill-tag">TestFlight</span>
-          </div>
-        </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>scroll
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stats-inner">
+      <div class="stat-item reveal">
+        <span class="stat-num" data-target="7">0</span><span class="stat-num">+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <span class="stat-num">100K+</span>
+        <span class="stat-label">App Downloads</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <span class="stat-num">4.6</span><span class="stat-num">★</span>
+        <span class="stat-label">Avg. App Rating</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <span class="stat-num" data-target="6">0</span>
+        <span class="stat-label">Apps Published</span>
       </div>
     </div>
   </div>
-</section>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="container">
-    <div class="section-label">Work History</div>
-    <h2 class="section-title reveal">Professional <em>Experience</em></h2>
-    <p class="section-sub reveal">A decade of building, shipping, and scaling iOS applications across fintech, e-commerce, healthcare, and civic tech.</p>
-
-    <div class="timeline">
-
-      <!-- Redpin -->
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="tc-header">
-            <div class="tc-role">Senior Software Engineer — iOS</div>
-            <div class="tc-period">Aug 2023 — Oct 2025</div>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">Building iOS apps that <em>perform</em></h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>I'm a <strong>Senior iOS Developer</strong> with 7+ years of IT experience and 6 years of specialised
+            expertise in iOS application development (iOS 13–17). I build performant, clean-architecture apps that users
+            love.</p>
+          <p>My expertise spans <strong>Swift, Objective-C, SwiftUI, UIKit, and Combine</strong>, with a deep focus on
+            MVVM patterns, performance profiling, and scalable code that stands the test of time.</p>
+          <p>I've shipped apps with <strong>100K+ collective downloads</strong> and maintained 4.6+ star ratings on the
+            App Store — from fintech platforms handling international money transfers, to high-traffic e-commerce apps
+            and community platforms.</p>
+          <p>Experienced integrating <strong>Firebase, WebEngage, Branch SDK, Lottie</strong>, and payment gateways, and
+            managing CI/CD pipelines via GitHub Actions. I'm comfortable owning the full release lifecycle end-to-end.
+          </p>
+          <div style="margin-top:1.75rem;">
+            <a href="mailto:alok.rathaur26@gmail.com" class="btn btn-primary" style="display:inline-flex;">
+              <i class="fa-regular fa-envelope"></i> alok.rathaur26@gmail.com
+            </a>
           </div>
-          <div class="tc-company"><i class="fa-solid fa-building" style="font-size:.8rem;margin-right:.4rem;"></i>Redpin</div>
-          <a href="https://apps.apple.com/gb/app/currencies-direct/id1094746471" target="_blank" rel="noopener" class="app-chip">
-            <div class="app-icon" style="background:none;border-radius:7px;overflow:hidden;"><img src="cd.png" alt="Currencies Direct" /></div>
-            Currencies Direct &nbsp;<i class="fa-brands fa-apple" style="font-size:.9rem;"></i> App Store
-          </a>
-          <ul class="tc-bullets">
-            <li>Led end-to-end development of the Currencies Direct iOS app (international money transfers), driving a <strong>22% increase in monthly active users</strong> over 12 months.</li>
-            <li>Cut app crash rate by <strong>35%</strong> by integrating Firebase Crashlytics and resolving the top 10 recurring crash patterns within the first quarter.</li>
-            <li>Improved cold launch time by <strong>~30%</strong> through lazy loading and deferred view initialisation — App Store rating rose from 4.3 to <strong>4.6 stars</strong>.</li>
-            <li>Architected a reusable MVVM component library, reducing feature development time by <strong>~25%</strong> across subsequent sprints.</li>
-            <li>Delivered end-to-end localisation for <strong>3 languages</strong>, expanding the app's addressable market across Europe.</li>
-            <li>Integrated automated iOS test suites into GitHub Actions CI/CD pipeline, significantly reducing manual release effort.</li>
-            <li>Collaborated with a cross-functional team of 8 in 2-week Agile sprints, owning the full App Store release lifecycle.</li>
-          </ul>
         </div>
-      </div>
-
-      <!-- SUGAR Cosmetics -->
-      <div class="timeline-item reveal">
-        <div class="timeline-dot" style="border-color:var(--accent2);box-shadow:0 0 12px rgba(123,104,238,.4);"></div>
-        <div class="timeline-card">
-          <div class="tc-header">
-            <div class="tc-role">Senior Software Engineer — iOS</div>
-            <div class="tc-period">Dec 2022 — Jul 2023</div>
-          </div>
-          <div class="tc-company"><i class="fa-solid fa-building" style="font-size:.8rem;margin-right:.4rem;"></i>SUGAR Cosmetics</div>
-          <a href="https://apps.apple.com/us/app/sugar-cosmetics/id1476501793" target="_blank" rel="noopener" class="app-chip">
-            <div class="app-icon" style="background:none;border-radius:7px;overflow:hidden;"><img src="sugar.png" alt="SUGAR Cosmetics" /></div>
-            SUGAR Cosmetics &nbsp;<i class="fa-brands fa-apple" style="font-size:.9rem;"></i> App Store
-          </a>
-          <ul class="tc-bullets">
-            <li>Enhanced SUGAR Cosmetics iOS e-commerce app (<strong>100K+ downloads, 4.6★</strong>), achieving an <strong>18% improvement in session duration</strong> following a UI/UX revamp.</li>
-            <li>Reduced memory footprint by <strong>40%</strong> using the Instruments Memory Profiler — eliminated retain cycles and resolved 3 major memory leak hotspots.</li>
-            <li>Decreased app binary size by <strong>15%</strong> through asset optimisation and on-demand resource loading.</li>
-            <li>Integrated WebEngage push notifications and in-app campaigns, contributing to a <strong>12% uplift</strong> in repeat purchase rate.</li>
-            <li>Implemented Branch SDK deep linking, improving referral conversion rate by <strong>~20%</strong>.</li>
-            <li>Built a Lottie-driven animated onboarding flow, reducing new-user drop-off by an estimated <strong>10%</strong>.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- JAWK Softwares -->
-      <div class="timeline-item reveal">
-        <div class="timeline-dot" style="border-color:var(--accent3);box-shadow:0 0 12px rgba(0,212,170,.4);"></div>
-        <div class="timeline-card">
-          <div class="tc-header">
-            <div class="tc-role">Software Developer — iOS</div>
-            <div class="tc-period">May 2017 — Oct 2019</div>
-          </div>
-          <div class="tc-company"><i class="fa-solid fa-building" style="font-size:.8rem;margin-right:.4rem;"></i>JAWK Softwares</div>
+        <div class="skills-grid reveal reveal-delay-1">
           <div>
-            <a href="https://apps.apple.com/us/app/neborhud/id1241312755" target="_blank" rel="noopener" class="app-chip">
-              <div class="app-icon" style="background:none;border-radius:7px;overflow:hidden;"><img src="neborhud.png" alt="Neborhud" /></div>
-              Neborhud &nbsp;<i class="fa-brands fa-apple" style="font-size:.9rem;"></i> App Store
-            </a>
-            <a href="https://apps.apple.com/us/app/tap2health/id6446981899" target="_blank" rel="noopener" class="app-chip">
-              <div class="app-icon" style="background:none;border-radius:7px;overflow:hidden;"><img src="tap2health.png" alt="Tap2Health" /></div>
-              Tap2Health &nbsp;<i class="fa-brands fa-apple" style="font-size:.9rem;"></i> App Store
-            </a>
-          </div>
-          <ul class="tc-bullets">
-            <li>Built Neborhud (<strong>4.5★</strong>) from scratch — a privacy-focused residential community app serving <strong>5,000+ registered users</strong> with events, polls, real-time messaging, and maintenance complaints.</li>
-            <li>Developed Tap2Health, a doctor–patient teleconsultation platform handling <strong>500+ daily appointment bookings</strong> at peak, with real-time slot availability.</li>
-            <li>Wrote XCTest unit and UI test suites covering <strong>~60% of core business logic</strong>, reducing regression bugs by 30% across releases.</li>
-            <li>Optimised the network layer using Alamofire with request caching and retry logic, cutting average API response time by <strong>20%</strong>.</li>
-            <li>Managed the full App Store deployment cycle, including provisioning, code signing, and submission.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- CBIL360 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-dot" style="border-color:#f59e0b;box-shadow:0 0 12px rgba(245,158,11,.3);"></div>
-        <div class="timeline-card">
-          <div class="tc-header">
-            <div class="tc-role">Software Developer — PHP / Web</div>
-            <div class="tc-period">Sep 2016 — Jan 2017</div>
-          </div>
-          <div class="tc-company"><i class="fa-solid fa-building" style="font-size:.8rem;margin-right:.4rem;"></i>CBIL360</div>
-          <a href="https://infinitejourneys.in/" target="_blank" rel="noopener" class="app-chip">
-            <div style="width:66px;height:28px;border-radius:6px;overflow:hidden;background:none;flex-shrink:0;">
-              <img src="Infinite-journeys.jpg" alt="InfiniteJourneys" style="width:100%;height:100%;object-fit:contain;display:block;" />
+            <div class="skill-group-label">iOS Core</div>
+            <div class="skill-tags">
+              <span class="skill-tag highlight">Swift</span>
+              <span class="skill-tag highlight">SwiftUI</span>
+              <span class="skill-tag">Objective-C</span>
+              <span class="skill-tag">UIKit</span>
+              <span class="skill-tag">Combine</span>
+              <span class="skill-tag">iOS 13–17</span>
             </div>
-            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.75rem;"></i> Visit Website
-          </a>
-          <ul class="tc-bullets">
-            <li>Contributed to the <strong>InfiniteJourneys</strong> web application — a tour and travel booking platform — using PHP, handling feature development and REST API integration.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- The Next Interface Technology -->
-      <div class="timeline-item reveal">
-        <div class="timeline-dot" style="border-color:#ec4899;box-shadow:0 0 12px rgba(236,72,153,.3);"></div>
-        <div class="timeline-card">
-          <div class="tc-header">
-            <div class="tc-role">Associate Software Developer — Web &amp; iOS</div>
-            <div class="tc-period">Sep 2014 — Jul 2016</div>
           </div>
-          <div class="tc-company"><i class="fa-solid fa-building" style="font-size:.8rem;margin-right:.4rem;"></i>The Next Interface Technology</div>
-          <a href="https://apps.apple.com/us/app/my-vote/id757649127" target="_blank" rel="noopener" class="app-chip">
-            <div class="app-icon" style="background:none;border-radius:7px;overflow:hidden;"><img src="myvote.png" alt="My Vote" /></div>
-            My Vote &nbsp;<i class="fa-brands fa-apple" style="font-size:.9rem;"></i> App Store
-          </a>
-          <ul class="tc-bullets">
-            <li>Built iOS features in Objective-C on Cocoa Touch and contributed to web development, delivering <strong>3 client applications</strong> from requirement gathering through App Store release.</li>
-            <li>Contributed to QA and regression testing, achieving a defect resolution rate of <strong>95%</strong> within sprint cycles.</li>
-          </ul>
+          <div>
+            <div class="skill-group-label">Architecture</div>
+            <div class="skill-tags">
+              <span class="skill-tag highlight">MVVM</span>
+              <span class="skill-tag">MVC</span>
+              <span class="skill-tag">Clean Architecture</span>
+              <span class="skill-tag">Agile / Scrum</span>
+            </div>
+          </div>
+          <div>
+            <div class="skill-group-label">SDKs & Tools</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Firebase</span>
+              <span class="skill-tag">Crashlytics</span>
+              <span class="skill-tag">WebEngage</span>
+              <span class="skill-tag">Branch SDK</span>
+              <span class="skill-tag highlight">Alamofire</span>
+              <span class="skill-tag">Lottie</span>
+              <span class="skill-tag">CocoaPods</span>
+              <span class="skill-tag">SPM</span>
+            </div>
+          </div>
+          <div>
+            <div class="skill-group-label">Testing & CI/CD</div>
+            <div class="skill-tags">
+              <span class="skill-tag">XCTest</span>
+              <span class="skill-tag">TDD</span>
+              <span class="skill-tag">Instruments</span>
+              <span class="skill-tag highlight">GitHub Actions</span>
+              <span class="skill-tag">TestFlight</span>
+            </div>
+          </div>
         </div>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PROJECTS / APPS -->
-<section id="projects">
-  <div class="container">
-    <div class="section-label">App Store</div>
-    <h2 class="section-title reveal">Published <em>Applications</em></h2>
-    <p class="section-sub reveal">Five live iOS apps across fintech, e-commerce, healthcare, civic tech, and community platforms — each with measurable impact.</p>
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-label">Work History</div>
+      <h2 class="section-title reveal">Professional <em>Experience</em></h2>
+      <p class="section-sub reveal">A decade of building, shipping, and scaling iOS applications across fintech,
+        e-commerce, healthcare, and civic tech.</p>
 
-    <div class="projects-grid">
+      <div class="timeline">
 
-      <!-- Currencies Direct -->
-      <div class="project-card reveal">
-        <div class="project-gradient"></div>
-        <div class="project-body">
-          <div class="project-header">
-            <div class="project-app-icon" style="background:none;overflow:hidden;padding:0;">
-              <img src="cd.png" alt="Currencies Direct" style="width:52px;height:52px;object-fit:cover;border-radius:13px;display:block;" />
+        <!-- LegendPrix AI -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot" style="border-color:#e844a8;box-shadow:0 0 12px rgba(232,68,168,.4);"></div>
+          <div class="timeline-card">
+            <div class="tc-header">
+              <div class="tc-role">Founder &amp; Indie Developer</div>
+              <div class="tc-period">Jan 2026 — Present</div>
             </div>
+            <div class="tc-company"><i class="fa-solid fa-building"
+                style="font-size:.8rem;margin-right:.4rem;"></i>LegendPrix AI</div>
             <div>
-              <div class="project-name">Currencies Direct</div>
-              <div class="project-company">Redpin &mdash; Fintech</div>
+              <a href="https://alokrathaur.github.io/" target="_blank" rel="noopener" class="app-chip">
+                <div class="app-icon"
+                  style="background:none;border-radius:7px;overflow:hidden;width:28px;height:28px;display:flex;align-items:center;justify-content:center;">
+                  <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    style="width:20px;height:20px;">
+                    <polygon points="19,2 34,10.5 34,27.5 19,36 4,27.5 4,10.5" fill="none" stroke="#e844a8"
+                      stroke-width="1.5" stroke-linejoin="round" />
+                    <text x="19" y="20" font-family="'Syne',sans-serif" font-size="9.5" font-weight="700" fill="#e844a8"
+                      text-anchor="middle" dominant-baseline="central" letter-spacing="1.5">LP</text>
+                  </svg>
+                </div>
+                LegendPrix AI &nbsp;<i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.75rem;"></i>
+                Visit Studio
+              </a>
+              <a href="https://apps.apple.com/us/app/dotmesh-dots-boxes-game/id6761758144" target="_blank"
+                rel="noopener" class="app-chip">
+                <div class="app-icon" style="background:none;border-radius:7px;overflow:hidden;"><img
+                    src="dotmesh-logo.png" alt="DotMesh" /></div>
+                DotMesh &nbsp;<i class="fa-brands fa-apple" style="font-size:.9rem;"></i> App Store
+              </a>
+              <a href="https://alokrathaur.github.io/DotMesh-Pro/" target="_blank" rel="noopener" class="app-chip">
+                <div class="app-icon" style="background:none;border-radius:7px;overflow:hidden;"><img
+                    src="dotmesh-logo.png" alt="DotMesh" /></div>
+                DotMesh &nbsp;<i class="fa-solid fa-globe" style="font-size:.9rem;"></i> Website
+              </a>
+              <a href="https://alokrathaur.github.io/" target="_blank" rel="noopener" class="app-chip">
+                <div class="app-icon" style="background:none;border-radius:7px;overflow:hidden;"><img
+                    src="tinyorbiturl-logo.png" alt="Tiny Orbit URL" /></div>
+                Tiny Orbit URL &nbsp;<i class="fa-solid fa-rocket" style="font-size:.9rem;"></i> Coming Soon
+              </a>
             </div>
+            <ul class="tc-bullets">
+              <li>Founded LegendPrix AI, an independent studio building exceptional mobile games and SaaS products.</li>
+              <li>Designed and developed <strong>DotMesh</strong>, a stunning reimagining of the classic Dots &amp;
+                Boxes strategy game featuring local multiplayer, smart AI bots, and live online play wrapped in
+                neon-drenched visuals.</li>
+              <li>Currently developing <strong>Tiny Orbit URL</strong>, a powerful URL shortening platform with custom
+                aliases, QR code generation, and click analytics.</li>
+            </ul>
           </div>
-          <p class="project-desc">International money transfer iOS app. Led full end-to-end development, achieving a 22% MAU growth, 35% crash reduction, and improved cold-start performance that pushed ratings from 4.3 to 4.6 stars.</p>
-          <div class="project-metrics">
-            <span class="metric-badge">+22% MAU</span>
-            <span class="metric-badge green">4.6 ★</span>
-            <span class="metric-badge purple">–35% Crashes</span>
-            <span class="metric-badge">–30% Launch Time</span>
-          </div>
-          <a href="https://apps.apple.com/gb/app/currencies-direct/id1094746471" target="_blank" rel="noopener" class="app-store-btn">
-            <i class="fa-brands fa-apple"></i> View on App Store
-          </a>
         </div>
-      </div>
 
-      <!-- SUGAR Cosmetics -->
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-gradient" style="background:linear-gradient(90deg,#e91e8c,var(--accent2),#f59e0b);"></div>
-        <div class="project-body">
-          <div class="project-header">
-            <div class="project-app-icon" style="background:none;overflow:hidden;padding:0;">
-              <img src="sugar.png" alt="SUGAR Cosmetics" style="width:52px;height:52px;object-fit:cover;border-radius:13px;display:block;" />
+        <!-- Redpin -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="tc-header">
+              <div class="tc-role">Senior Software Engineer — iOS</div>
+              <div class="tc-period">Aug 2023 — Oct 2025</div>
             </div>
+            <div class="tc-company"><i class="fa-solid fa-building"
+                style="font-size:.8rem;margin-right:.4rem;"></i>Redpin</div>
+            <a href="https://apps.apple.com/gb/app/currencies-direct/id1094746471" target="_blank" rel="noopener"
+              class="app-chip">
+              <div class="app-icon" style="background:none;border-radius:7px;overflow:hidden;"><img src="cd.png"
+                  alt="Currencies Direct" /></div>
+              Currencies Direct &nbsp;<i class="fa-brands fa-apple" style="font-size:.9rem;"></i> App Store
+            </a>
+            <ul class="tc-bullets">
+              <li>Led end-to-end development of the Currencies Direct iOS app (international money transfers), driving a
+                <strong>22% increase in monthly active users</strong> over 12 months.
+              </li>
+              <li>Cut app crash rate by <strong>35%</strong> by integrating Firebase Crashlytics and resolving the top
+                10 recurring crash patterns within the first quarter.</li>
+              <li>Improved cold launch time by <strong>~30%</strong> through lazy loading and deferred view
+                initialisation — App Store rating rose from 4.3 to <strong>4.6 stars</strong>.</li>
+              <li>Architected a reusable MVVM component library, reducing feature development time by
+                <strong>~25%</strong> across subsequent sprints.
+              </li>
+              <li>Delivered end-to-end localisation for <strong>3 languages</strong>, expanding the app's addressable
+                market across Europe.</li>
+              <li>Integrated automated iOS test suites into GitHub Actions CI/CD pipeline, significantly reducing manual
+                release effort.</li>
+              <li>Collaborated with a cross-functional team of 8 in 2-week Agile sprints, owning the full App Store
+                release lifecycle.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- SUGAR Cosmetics -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot" style="border-color:var(--accent2);box-shadow:0 0 12px rgba(123,104,238,.4);"></div>
+          <div class="timeline-card">
+            <div class="tc-header">
+              <div class="tc-role">Senior Software Engineer — iOS</div>
+              <div class="tc-period">Dec 2022 — Jul 2023</div>
+            </div>
+            <div class="tc-company"><i class="fa-solid fa-building"
+                style="font-size:.8rem;margin-right:.4rem;"></i>SUGAR Cosmetics</div>
+            <a href="https://apps.apple.com/us/app/sugar-cosmetics/id1476501793" target="_blank" rel="noopener"
+              class="app-chip">
+              <div class="app-icon" style="background:none;border-radius:7px;overflow:hidden;"><img src="sugar.png"
+                  alt="SUGAR Cosmetics" /></div>
+              SUGAR Cosmetics &nbsp;<i class="fa-brands fa-apple" style="font-size:.9rem;"></i> App Store
+            </a>
+            <ul class="tc-bullets">
+              <li>Enhanced SUGAR Cosmetics iOS e-commerce app (<strong>100K+ downloads, 4.6★</strong>), achieving an
+                <strong>18% improvement in session duration</strong> following a UI/UX revamp.
+              </li>
+              <li>Reduced memory footprint by <strong>40%</strong> using the Instruments Memory Profiler — eliminated
+                retain cycles and resolved 3 major memory leak hotspots.</li>
+              <li>Decreased app binary size by <strong>15%</strong> through asset optimisation and on-demand resource
+                loading.</li>
+              <li>Integrated WebEngage push notifications and in-app campaigns, contributing to a <strong>12%
+                  uplift</strong> in repeat purchase rate.</li>
+              <li>Implemented Branch SDK deep linking, improving referral conversion rate by <strong>~20%</strong>.</li>
+              <li>Built a Lottie-driven animated onboarding flow, reducing new-user drop-off by an estimated
+                <strong>10%</strong>.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- JAWK Softwares -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot" style="border-color:var(--accent3);box-shadow:0 0 12px rgba(0,212,170,.4);"></div>
+          <div class="timeline-card">
+            <div class="tc-header">
+              <div class="tc-role">Software Developer — iOS</div>
+              <div class="tc-period">May 2017 — Oct 2019</div>
+            </div>
+            <div class="tc-company"><i class="fa-solid fa-building" style="font-size:.8rem;margin-right:.4rem;"></i>JAWK
+              Softwares</div>
             <div>
-              <div class="project-name">SUGAR Cosmetics</div>
-              <div class="project-company">SUGAR Cosmetics &mdash; E-commerce</div>
+              <a href="https://apps.apple.com/us/app/neborhud/id1241312755" target="_blank" rel="noopener"
+                class="app-chip">
+                <div class="app-icon" style="background:none;border-radius:7px;overflow:hidden;"><img src="neborhud.png"
+                    alt="Neborhud" /></div>
+                Neborhud &nbsp;<i class="fa-brands fa-apple" style="font-size:.9rem;"></i> App Store
+              </a>
+              <a href="https://apps.apple.com/us/app/tap2health/id6446981899" target="_blank" rel="noopener"
+                class="app-chip">
+                <div class="app-icon" style="background:none;border-radius:7px;overflow:hidden;"><img
+                    src="tap2health.png" alt="Tap2Health" /></div>
+                Tap2Health &nbsp;<i class="fa-brands fa-apple" style="font-size:.9rem;"></i> App Store
+              </a>
             </div>
+            <ul class="tc-bullets">
+              <li>Built Neborhud (<strong>4.5★</strong>) from scratch — a privacy-focused residential community app
+                serving <strong>5,000+ registered users</strong> with events, polls, real-time messaging, and
+                maintenance complaints.</li>
+              <li>Developed Tap2Health, a doctor–patient teleconsultation platform handling <strong>500+ daily
+                  appointment bookings</strong> at peak, with real-time slot availability.</li>
+              <li>Wrote XCTest unit and UI test suites covering <strong>~60% of core business logic</strong>, reducing
+                regression bugs by 30% across releases.</li>
+              <li>Optimised the network layer using Alamofire with request caching and retry logic, cutting average API
+                response time by <strong>20%</strong>.</li>
+              <li>Managed the full App Store deployment cycle, including provisioning, code signing, and submission.
+              </li>
+            </ul>
           </div>
-          <p class="project-desc">Premium cosmetics e-commerce app with 100K+ downloads and 4.6★ rating. Delivered performance overhaul cutting memory usage by 40%, binary size by 15%, and boosting repeat purchases through smart integrations.</p>
-          <div class="project-metrics">
-            <span class="metric-badge">100K+ Downloads</span>
-            <span class="metric-badge green">4.6 ★</span>
-            <span class="metric-badge purple">–40% Memory</span>
-            <span class="metric-badge">+18% Sessions</span>
-          </div>
-          <a href="https://apps.apple.com/us/app/sugar-cosmetics/id1476501793" target="_blank" rel="noopener" class="app-store-btn">
-            <i class="fa-brands fa-apple"></i> View on App Store
-          </a>
         </div>
-      </div>
 
-      <!-- Neborhud -->
-      <div class="project-card reveal reveal-delay-2">
-        <div class="project-gradient" style="background:linear-gradient(90deg,#1a8c4e,var(--accent3),var(--accent));"></div>
-        <div class="project-body">
-          <div class="project-header">
-            <div class="project-app-icon" style="background:none;overflow:hidden;padding:0;">
-              <img src="neborhud.png" alt="Neborhud" style="width:52px;height:52px;object-fit:cover;border-radius:13px;display:block;" />
+        <!-- CBIL360 -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot" style="border-color:#f59e0b;box-shadow:0 0 12px rgba(245,158,11,.3);"></div>
+          <div class="timeline-card">
+            <div class="tc-header">
+              <div class="tc-role">Software Developer — PHP / Web</div>
+              <div class="tc-period">Sep 2016 — Jan 2017</div>
             </div>
-            <div>
-              <div class="project-name">Neborhud</div>
-              <div class="project-company">JAWK Softwares &mdash; Community</div>
-            </div>
+            <div class="tc-company"><i class="fa-solid fa-building"
+                style="font-size:.8rem;margin-right:.4rem;"></i>CBIL360</div>
+            <a href="https://infinitejourneys.in/" target="_blank" rel="noopener" class="app-chip">
+              <div style="width:66px;height:28px;border-radius:6px;overflow:hidden;background:none;flex-shrink:0;">
+                <img src="Infinite-journeys.jpg" alt="InfiniteJourneys"
+                  style="width:100%;height:100%;object-fit:contain;display:block;" />
+              </div>
+              <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.75rem;"></i> Visit Website
+            </a>
+            <ul class="tc-bullets">
+              <li>Contributed to the <strong>InfiniteJourneys</strong> web application — a tour and travel booking
+                platform — using PHP, handling feature development and REST API integration.</li>
+            </ul>
           </div>
-          <p class="project-desc">Privacy-focused residential community app built from scratch. Serves 5,000+ registered users with events, polls, real-time messaging, and maintenance complaint management. Rated 4.5★ on the US App Store.</p>
-          <div class="project-metrics">
-            <span class="metric-badge">5,000+ Users</span>
-            <span class="metric-badge green">4.5 ★</span>
-            <span class="metric-badge purple">Built from scratch</span>
-          </div>
-          <a href="https://apps.apple.com/us/app/neborhud/id1241312755" target="_blank" rel="noopener" class="app-store-btn">
-            <i class="fa-brands fa-apple"></i> View on App Store
-          </a>
         </div>
-      </div>
 
-      <!-- Tap2Health -->
-      <div class="project-card reveal">
-        <div class="project-gradient" style="background:linear-gradient(90deg,#0a6fb0,var(--accent),var(--accent3));"></div>
-        <div class="project-body">
-          <div class="project-header">
-            <div class="project-app-icon" style="background:none;overflow:hidden;padding:0;">
-              <img src="tap2health.png" alt="Tap2Health" style="width:52px;height:52px;object-fit:cover;border-radius:13px;display:block;" />
+        <!-- The Next Interface Technology -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot" style="border-color:#ec4899;box-shadow:0 0 12px rgba(236,72,153,.3);"></div>
+          <div class="timeline-card">
+            <div class="tc-header">
+              <div class="tc-role">Associate Software Developer — Web &amp; iOS</div>
+              <div class="tc-period">Sep 2014 — Jul 2016</div>
             </div>
-            <div>
-              <div class="project-name">Tap2Health</div>
-              <div class="project-company">JAWK Softwares &mdash; Healthcare</div>
-            </div>
+            <div class="tc-company"><i class="fa-solid fa-building" style="font-size:.8rem;margin-right:.4rem;"></i>The
+              Next Interface Technology</div>
+            <a href="https://apps.apple.com/us/app/my-vote/id757649127" target="_blank" rel="noopener" class="app-chip">
+              <div class="app-icon" style="background:none;border-radius:7px;overflow:hidden;"><img src="myvote.png"
+                  alt="My Vote" /></div>
+              My Vote &nbsp;<i class="fa-brands fa-apple" style="font-size:.9rem;"></i> App Store
+            </a>
+            <ul class="tc-bullets">
+              <li>Built iOS features in Objective-C on Cocoa Touch and contributed to web development, delivering
+                <strong>3 client applications</strong> from requirement gathering through App Store release.
+              </li>
+              <li>Contributed to QA and regression testing, achieving a defect resolution rate of <strong>95%</strong>
+                within sprint cycles.</li>
+            </ul>
           </div>
-          <p class="project-desc">Doctor–patient teleconsultation platform handling 500+ daily appointment bookings at peak, with real-time slot availability. Achieved 60% test coverage with XCTest, reducing regression bugs by 30%.</p>
-          <div class="project-metrics">
-            <span class="metric-badge">500+ Daily Bookings</span>
-            <span class="metric-badge green">60% Test Coverage</span>
-            <span class="metric-badge purple">–30% Regressions</span>
-          </div>
-          <a href="https://apps.apple.com/us/app/tap2health/id6446981899" target="_blank" rel="noopener" class="app-store-btn">
-            <i class="fa-brands fa-apple"></i> View on App Store
-          </a>
         </div>
-      </div>
 
-      <!-- My Vote -->
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-gradient" style="background:linear-gradient(90deg,#be185d,#ec4899,var(--accent2));"></div>
-        <div class="project-body">
-          <div class="project-header">
-            <div class="project-app-icon" style="background:none;overflow:hidden;padding:0;">
-              <img src="myvote.png" alt="My Vote" style="width:52px;height:52px;object-fit:cover;border-radius:13px;display:block;" />
-            </div>
-            <div>
-              <div class="project-name">My Vote</div>
-              <div class="project-company">The Next Interface Technology &mdash; Civic Tech</div>
-            </div>
-          </div>
-          <p class="project-desc">Civic engagement voting application built with Objective-C on Cocoa Touch. One of 3 client apps delivered from requirement gathering through to App Store release. Maintained 95% defect resolution within sprints.</p>
-          <div class="project-metrics">
-            <span class="metric-badge">Objective-C</span>
-            <span class="metric-badge green">95% Defect Resolution</span>
-            <span class="metric-badge purple">Full Lifecycle</span>
-          </div>
-          <a href="https://apps.apple.com/us/app/my-vote/id757649127" target="_blank" rel="noopener" class="app-store-btn">
-            <i class="fa-brands fa-apple"></i> View on App Store
-          </a>
-        </div>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="container">
-    <div class="section-label">Technical Skills</div>
-    <h2 class="section-title reveal">Full <em>Toolkit</em></h2>
-    <p class="section-sub reveal">From Swift to CI/CD — a complete picture of the technologies I use daily to ship high-quality iOS products.</p>
+  <!-- PROJECTS / APPS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-label">App Store</div>
+      <h2 class="section-title reveal">Published <em>Applications</em></h2>
+      <p class="section-sub reveal">Six live products across gaming, SaaS, fintech, e-commerce, healthcare, and
+        community platforms — each with measurable impact.</p>
 
-    <div class="skills-big-grid">
+      <div class="projects-grid">
 
-      <div class="skill-card reveal">
-        <div class="skill-card-icon" style="background:rgba(79,156,249,.12);color:var(--accent);">
-          <i class="fa-brands fa-swift"></i>
+        <!-- DotMesh -->
+        <div class="project-card reveal">
+          <div class="project-gradient" style="background:linear-gradient(90deg,var(--accent),var(--accent3),#e844a8);">
+          </div>
+          <div class="project-body">
+            <div class="project-header">
+              <div class="project-app-icon" style="background:none;overflow:hidden;padding:0;">
+                <img src="dotmesh-logo.png" alt="DotMesh"
+                  style="width:52px;height:52px;object-fit:cover;border-radius:13px;display:block;" />
+              </div>
+              <div>
+                <div class="project-name">DotMesh</div>
+                <div class="project-company">LegendPrix AI &mdash; Mobile Game</div>
+              </div>
+            </div>
+            <p class="project-desc">A stunning reimagining of the classic Dots &amp; Boxes strategy game. Battle friends
+              locally, challenge intelligent AI bots, or jump into live online matches — all wrapped in neon-drenched
+              visuals that glow.</p>
+            <div class="project-metrics">
+              <span class="metric-badge">Multiplayer</span>
+              <span class="metric-badge green">Smart AI</span>
+              <span class="metric-badge purple">Online Play</span>
+            </div>
+            <div style="display: flex; gap: 0.5rem; width: 100%;">
+              <a href="https://apps.apple.com/in/app/dotmesh-dots-boxes-game/id6761758144" target="_blank"
+                rel="noopener" class="app-store-btn" style="flex: 1; padding: .7rem .5rem;">
+                <i class="fa-brands fa-apple"></i> App Store
+              </a>
+              <a href="https://alokrathaur.github.io/DotMesh-Pro/" target="_blank" rel="noopener" class="app-store-btn"
+                style="flex: 1; padding: .7rem .5rem;">
+                <i class="fa-solid fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="skill-card-title">iOS Development</div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>Swift</span><span>95%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
+
+        <!-- Tiny Orbit URL -->
+        <div class="project-card reveal reveal-delay-1">
+          <div class="project-gradient" style="background:linear-gradient(90deg,#1dcfbd,var(--accent),var(--accent2));">
+          </div>
+          <div class="project-body">
+            <div class="project-header">
+              <div class="project-app-icon" style="background:none;overflow:hidden;padding:0;">
+                <img src="tinyorbiturl-logo.png" alt="Tiny Orbit URL"
+                  style="width:52px;height:52px;object-fit:cover;border-radius:13px;display:block;" />
+              </div>
+              <div>
+                <div class="project-name">Tiny Orbit URL</div>
+                <div class="project-company">LegendPrix AI &mdash; SaaS Product</div>
+              </div>
+            </div>
+            <p class="project-desc">A powerful URL shortening platform built for developers and marketers. Generate
+              branded short links, create QR codes instantly, and gain deep insight through click analytics and
+              tracking.</p>
+            <div class="project-metrics">
+              <span class="metric-badge">Custom Aliases</span>
+              <span class="metric-badge green">QR Codes</span>
+              <span class="metric-badge purple">Analytics</span>
+            </div>
+            <a href="https://alokrathaur.github.io/" target="_blank" rel="noopener" class="app-store-btn">
+              <i class="fa-solid fa-rocket"></i> Coming Soon
+            </a>
+          </div>
         </div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>SwiftUI</span><span>88%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+
+        <!-- Currencies Direct -->
+        <div class="project-card reveal reveal-delay-2">
+          <div class="project-gradient"></div>
+          <div class="project-body">
+            <div class="project-header">
+              <div class="project-app-icon" style="background:none;overflow:hidden;padding:0;">
+                <img src="cd.png" alt="Currencies Direct"
+                  style="width:52px;height:52px;object-fit:cover;border-radius:13px;display:block;" />
+              </div>
+              <div>
+                <div class="project-name">Currencies Direct</div>
+                <div class="project-company">Redpin &mdash; Fintech</div>
+              </div>
+            </div>
+            <p class="project-desc">International money transfer iOS app. Led full end-to-end development, achieving a
+              22% MAU growth, 35% crash reduction, and improved cold-start performance that pushed ratings from 4.3 to
+              4.6 stars.</p>
+            <div class="project-metrics">
+              <span class="metric-badge">+22% MAU</span>
+              <span class="metric-badge green">4.6 ★</span>
+              <span class="metric-badge purple">–35% Crashes</span>
+              <span class="metric-badge">–30% Launch Time</span>
+            </div>
+            <a href="https://apps.apple.com/gb/app/currencies-direct/id1094746471" target="_blank" rel="noopener"
+              class="app-store-btn">
+              <i class="fa-brands fa-apple"></i> View on App Store
+            </a>
+          </div>
         </div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>UIKit</span><span>92%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
+
+        <!-- SUGAR Cosmetics -->
+        <div class="project-card reveal reveal-delay-1">
+          <div class="project-gradient" style="background:linear-gradient(90deg,#e91e8c,var(--accent2),#f59e0b);"></div>
+          <div class="project-body">
+            <div class="project-header">
+              <div class="project-app-icon" style="background:none;overflow:hidden;padding:0;">
+                <img src="sugar.png" alt="SUGAR Cosmetics"
+                  style="width:52px;height:52px;object-fit:cover;border-radius:13px;display:block;" />
+              </div>
+              <div>
+                <div class="project-name">SUGAR Cosmetics</div>
+                <div class="project-company">SUGAR Cosmetics &mdash; E-commerce</div>
+              </div>
+            </div>
+            <p class="project-desc">Premium cosmetics e-commerce app with 100K+ downloads and 4.6★ rating. Delivered
+              performance overhaul cutting memory usage by 40%, binary size by 15%, and boosting repeat purchases
+              through smart integrations.</p>
+            <div class="project-metrics">
+              <span class="metric-badge">100K+ Downloads</span>
+              <span class="metric-badge green">4.6 ★</span>
+              <span class="metric-badge purple">–40% Memory</span>
+              <span class="metric-badge">+18% Sessions</span>
+            </div>
+            <a href="https://apps.apple.com/us/app/sugar-cosmetics/id1476501793" target="_blank" rel="noopener"
+              class="app-store-btn">
+              <i class="fa-brands fa-apple"></i> View on App Store
+            </a>
+          </div>
         </div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>Objective-C</span><span>80%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+
+        <!-- Neborhud -->
+        <div class="project-card reveal reveal-delay-2">
+          <div class="project-gradient" style="background:linear-gradient(90deg,#1a8c4e,var(--accent3),var(--accent));">
+          </div>
+          <div class="project-body">
+            <div class="project-header">
+              <div class="project-app-icon" style="background:none;overflow:hidden;padding:0;">
+                <img src="neborhud.png" alt="Neborhud"
+                  style="width:52px;height:52px;object-fit:cover;border-radius:13px;display:block;" />
+              </div>
+              <div>
+                <div class="project-name">Neborhud</div>
+                <div class="project-company">JAWK Softwares &mdash; Community</div>
+              </div>
+            </div>
+            <p class="project-desc">Privacy-focused residential community app built from scratch. Serves 5,000+
+              registered users with events, polls, real-time messaging, and maintenance complaint management. Rated 4.5★
+              on the US App Store.</p>
+            <div class="project-metrics">
+              <span class="metric-badge">5,000+ Users</span>
+              <span class="metric-badge green">4.5 ★</span>
+              <span class="metric-badge purple">Built from scratch</span>
+            </div>
+            <a href="https://apps.apple.com/us/app/neborhud/id1241312755" target="_blank" rel="noopener"
+              class="app-store-btn">
+              <i class="fa-brands fa-apple"></i> View on App Store
+            </a>
+          </div>
         </div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>Combine</span><span>82%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
+
+        <!-- Tap2Health -->
+        <div class="project-card reveal">
+          <div class="project-gradient" style="background:linear-gradient(90deg,#0a6fb0,var(--accent),var(--accent3));">
+          </div>
+          <div class="project-body">
+            <div class="project-header">
+              <div class="project-app-icon" style="background:none;overflow:hidden;padding:0;">
+                <img src="tap2health.png" alt="Tap2Health"
+                  style="width:52px;height:52px;object-fit:cover;border-radius:13px;display:block;" />
+              </div>
+              <div>
+                <div class="project-name">Tap2Health</div>
+                <div class="project-company">JAWK Softwares &mdash; Healthcare</div>
+              </div>
+            </div>
+            <p class="project-desc">Doctor–patient teleconsultation platform handling 500+ daily appointment bookings at
+              peak, with real-time slot availability. Achieved 60% test coverage with XCTest, reducing regression bugs
+              by 30%.</p>
+            <div class="project-metrics">
+              <span class="metric-badge">500+ Daily Bookings</span>
+              <span class="metric-badge green">60% Test Coverage</span>
+              <span class="metric-badge purple">–30% Regressions</span>
+            </div>
+            <a href="https://apps.apple.com/us/app/tap2health/id6446981899" target="_blank" rel="noopener"
+              class="app-store-btn">
+              <i class="fa-brands fa-apple"></i> View on App Store
+            </a>
+          </div>
         </div>
+
+        <!-- My Vote -->
+        <div class="project-card reveal reveal-delay-1">
+          <div class="project-gradient" style="background:linear-gradient(90deg,#be185d,#ec4899,var(--accent2));"></div>
+          <div class="project-body">
+            <div class="project-header">
+              <div class="project-app-icon" style="background:none;overflow:hidden;padding:0;">
+                <img src="myvote.png" alt="My Vote"
+                  style="width:52px;height:52px;object-fit:cover;border-radius:13px;display:block;" />
+              </div>
+              <div>
+                <div class="project-name">My Vote</div>
+                <div class="project-company">The Next Interface Technology &mdash; Civic Tech</div>
+              </div>
+            </div>
+            <p class="project-desc">Civic engagement voting application built with Objective-C on Cocoa Touch. One of 3
+              client apps delivered from requirement gathering through to App Store release. Maintained 95% defect
+              resolution within sprints.</p>
+            <div class="project-metrics">
+              <span class="metric-badge">Objective-C</span>
+              <span class="metric-badge green">95% Defect Resolution</span>
+              <span class="metric-badge purple">Full Lifecycle</span>
+            </div>
+            <a href="https://apps.apple.com/us/app/my-vote/id757649127" target="_blank" rel="noopener"
+              class="app-store-btn">
+              <i class="fa-brands fa-apple"></i> View on App Store
+            </a>
+          </div>
+        </div>
+
       </div>
+    </div>
+  </section>
 
-      <div class="skill-card reveal reveal-delay-1">
-        <div class="skill-card-icon" style="background:rgba(123,104,238,.12);color:var(--accent2);">
-          <i class="fa-solid fa-layer-group"></i>
-        </div>
-        <div class="skill-card-title">Architecture & Patterns</div>
-        <div class="skill-card-tags">
-          <span class="sct">MVVM</span>
-          <span class="sct">MVC</span>
-          <span class="sct">Clean Architecture</span>
-          <span class="sct">Dependency Injection</span>
-          <span class="sct">Observer Pattern</span>
-          <span class="sct">Repository Pattern</span>
-          <span class="sct">Agile / Scrum</span>
-          <span class="sct">2-week Sprints</span>
-        </div>
-        <div style="margin-top:1.25rem;">
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-label">Technical Skills</div>
+      <h2 class="section-title reveal">Full <em>Toolkit</em></h2>
+      <p class="section-sub reveal">From Swift to CI/CD — a complete picture of the technologies I use daily to ship
+        high-quality iOS products.</p>
+
+      <div class="skills-big-grid">
+
+        <div class="skill-card reveal">
+          <div class="skill-card-icon" style="background:rgba(79,156,249,.12);color:var(--accent);">
+            <i class="fa-brands fa-swift"></i>
+          </div>
+          <div class="skill-card-title">iOS Development</div>
           <div class="skill-bar-row">
-            <div class="skill-bar-label"><span>MVVM Proficiency</span><span>95%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95" style="background:linear-gradient(90deg,var(--accent2),var(--accent3));"></div></div>
+            <div class="skill-bar-label"><span>Swift</span><span>95%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="95"></div>
+            </div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>SwiftUI</span><span>88%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="88"></div>
+            </div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>UIKit</span><span>92%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="92"></div>
+            </div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>Objective-C</span><span>80%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="80"></div>
+            </div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>Combine</span><span>82%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="82"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card reveal reveal-delay-1">
+          <div class="skill-card-icon" style="background:rgba(123,104,238,.12);color:var(--accent2);">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+          <div class="skill-card-title">Architecture & Patterns</div>
+          <div class="skill-card-tags">
+            <span class="sct">MVVM</span>
+            <span class="sct">MVC</span>
+            <span class="sct">Clean Architecture</span>
+            <span class="sct">Dependency Injection</span>
+            <span class="sct">Observer Pattern</span>
+            <span class="sct">Repository Pattern</span>
+            <span class="sct">Agile / Scrum</span>
+            <span class="sct">2-week Sprints</span>
+          </div>
+          <div style="margin-top:1.25rem;">
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>MVVM Proficiency</span><span>95%</span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="95"
+                  style="background:linear-gradient(90deg,var(--accent2),var(--accent3));"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card reveal reveal-delay-2">
+          <div class="skill-card-icon" style="background:rgba(0,212,170,.1);color:var(--accent3);">
+            <i class="fa-solid fa-vial"></i>
+          </div>
+          <div class="skill-card-title">Testing &amp; QA</div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>XCTest / TDD</span><span>85%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="85"
+                style="background:linear-gradient(90deg,var(--accent3),var(--accent));"></div>
+            </div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>UI Testing</span><span>78%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="78"
+                style="background:linear-gradient(90deg,var(--accent3),var(--accent));"></div>
+            </div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>Instruments / Profiler</span><span>88%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="88"
+                style="background:linear-gradient(90deg,var(--accent3),var(--accent));"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card-icon" style="background:rgba(245,158,11,.1);color:#f59e0b;">
+            <i class="fa-solid fa-gears"></i>
+          </div>
+          <div class="skill-card-title">CI/CD &amp; DevOps</div>
+          <div class="skill-card-tags">
+            <span class="sct">GitHub Actions</span>
+            <span class="sct">Git</span>
+            <span class="sct">CocoaPods</span>
+            <span class="sct">Swift Package Manager</span>
+            <span class="sct">TestFlight</span>
+            <span class="sct">Xcode</span>
+            <span class="sct">App Store Connect</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal reveal-delay-1">
+          <div class="skill-card-icon" style="background:rgba(239,68,68,.1);color:#ef4444;">
+            <i class="fa-solid fa-fire"></i>
+          </div>
+          <div class="skill-card-title">SDKs &amp; APIs</div>
+          <div class="skill-card-tags">
+            <span class="sct">Firebase</span>
+            <span class="sct">Crashlytics</span>
+            <span class="sct">WebEngage</span>
+            <span class="sct">Branch SDK</span>
+            <span class="sct">Alamofire</span>
+            <span class="sct">Lottie</span>
+            <span class="sct">REST APIs</span>
+            <span class="sct">Postman</span>
+            <span class="sct">Push Notifications</span>
+            <span class="sct">In-App Purchases</span>
+            <span class="sct">Deep Linking</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal reveal-delay-2">
+          <div class="skill-card-icon" style="background:rgba(79,156,249,.1);color:var(--accent);">
+            <i class="fa-solid fa-users-gear"></i>
+          </div>
+          <div class="skill-card-title">Soft Skills &amp; Tools</div>
+          <div class="skill-card-tags">
+            <span class="sct">JIRA</span>
+            <span class="sct">Confluence</span>
+            <span class="sct">Cross-functional Teams</span>
+            <span class="sct">Technical Leadership</span>
+            <span class="sct">Code Review</span>
+            <span class="sct">Localisation</span>
+            <span class="sct">App Store Lifecycle</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container">
+      <div class="section-label">Education</div>
+      <h2 class="section-title reveal">Academic <em>Background</em></h2>
+      <div class="edu-grid reveal">
+        <div class="edu-card">
+          <div class="edu-icon">🎓</div>
+          <div class="edu-degree">B.Tech — Computer Science &amp; Engineering</div>
+          <div class="edu-inst">Allen House Institute of Technology, Kanpur (UPTU)</div>
+          <div class="edu-meta">
+            <span class="edu-badge">2013</span>
+            <span class="edu-badge">Score: 71%</span>
+            <span class="edu-badge">Computer Science</span>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-icon">📜</div>
+          <div class="edu-degree">PG Diploma — Computers</div>
+          <div class="edu-inst">IACSD</div>
+          <div class="edu-meta">
+            <span class="edu-badge">2014</span>
+            <span class="edu-badge">Score: 71%</span>
+            <span class="edu-badge">Post Graduate</span>
           </div>
         </div>
       </div>
-
-      <div class="skill-card reveal reveal-delay-2">
-        <div class="skill-card-icon" style="background:rgba(0,212,170,.1);color:var(--accent3);">
-          <i class="fa-solid fa-vial"></i>
-        </div>
-        <div class="skill-card-title">Testing &amp; QA</div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>XCTest / TDD</span><span>85%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85" style="background:linear-gradient(90deg,var(--accent3),var(--accent));"></div></div>
-        </div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>UI Testing</span><span>78%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="78" style="background:linear-gradient(90deg,var(--accent3),var(--accent));"></div></div>
-        </div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>Instruments / Profiler</span><span>88%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88" style="background:linear-gradient(90deg,var(--accent3),var(--accent));"></div></div>
-        </div>
-      </div>
-
-      <div class="skill-card reveal">
-        <div class="skill-card-icon" style="background:rgba(245,158,11,.1);color:#f59e0b;">
-          <i class="fa-solid fa-gears"></i>
-        </div>
-        <div class="skill-card-title">CI/CD &amp; DevOps</div>
-        <div class="skill-card-tags">
-          <span class="sct">GitHub Actions</span>
-          <span class="sct">Git</span>
-          <span class="sct">CocoaPods</span>
-          <span class="sct">Swift Package Manager</span>
-          <span class="sct">TestFlight</span>
-          <span class="sct">Xcode</span>
-          <span class="sct">App Store Connect</span>
-        </div>
-      </div>
-
-      <div class="skill-card reveal reveal-delay-1">
-        <div class="skill-card-icon" style="background:rgba(239,68,68,.1);color:#ef4444;">
-          <i class="fa-solid fa-fire"></i>
-        </div>
-        <div class="skill-card-title">SDKs &amp; APIs</div>
-        <div class="skill-card-tags">
-          <span class="sct">Firebase</span>
-          <span class="sct">Crashlytics</span>
-          <span class="sct">WebEngage</span>
-          <span class="sct">Branch SDK</span>
-          <span class="sct">Alamofire</span>
-          <span class="sct">Lottie</span>
-          <span class="sct">REST APIs</span>
-          <span class="sct">Postman</span>
-          <span class="sct">Push Notifications</span>
-          <span class="sct">In-App Purchases</span>
-          <span class="sct">Deep Linking</span>
-        </div>
-      </div>
-
-      <div class="skill-card reveal reveal-delay-2">
-        <div class="skill-card-icon" style="background:rgba(79,156,249,.1);color:var(--accent);">
-          <i class="fa-solid fa-users-gear"></i>
-        </div>
-        <div class="skill-card-title">Soft Skills &amp; Tools</div>
-        <div class="skill-card-tags">
-          <span class="sct">JIRA</span>
-          <span class="sct">Confluence</span>
-          <span class="sct">Cross-functional Teams</span>
-          <span class="sct">Technical Leadership</span>
-          <span class="sct">Code Review</span>
-          <span class="sct">Localisation</span>
-          <span class="sct">App Store Lifecycle</span>
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- EDUCATION -->
-<section id="education">
-  <div class="container">
-    <div class="section-label">Education</div>
-    <h2 class="section-title reveal">Academic <em>Background</em></h2>
-    <div class="edu-grid reveal">
-      <div class="edu-card">
-        <div class="edu-icon">🎓</div>
-        <div class="edu-degree">B.Tech — Computer Science &amp; Engineering</div>
-        <div class="edu-inst">Allen House Institute of Technology, Kanpur (UPTU)</div>
-        <div class="edu-meta">
-          <span class="edu-badge">2013</span>
-          <span class="edu-badge">Score: 71%</span>
-          <span class="edu-badge">Computer Science</span>
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="section-label" style="justify-content:center;">Get In Touch</div>
+        <h2 class="section-title reveal" style="margin:0 auto 1rem;">Let's build something <em>great</em></h2>
+        <p class="contact-desc reveal">I'm open to senior iOS roles, freelance projects, and interesting collaborations.
+          Available to join immediately — let's talk.</p>
+
+        <div class="contact-cards reveal">
+          <a href="mailto:alok.rathaur26@gmail.com" class="contact-card">
+            <i class="fa-regular fa-envelope"></i>
+            <span class="cc-label">Email</span>
+            <span class="cc-val">alok.rathaur26@gmail.com</span>
+          </a>
+          <a href="tel:+917571868833" class="contact-card">
+            <i class="fa-solid fa-phone"></i>
+            <span class="cc-label">Phone</span>
+            <span class="cc-val">+91-7571868833</span>
+          </a>
+          <a href="#" class="contact-card">
+            <i class="fa-solid fa-location-dot"></i>
+            <span class="cc-label">Location</span>
+            <span class="cc-val">Mumbai, India</span>
+          </a>
         </div>
-      </div>
-      <div class="edu-card">
-        <div class="edu-icon">📜</div>
-        <div class="edu-degree">PG Diploma — Computers</div>
-        <div class="edu-inst">IACSD</div>
-        <div class="edu-meta">
-          <span class="edu-badge">2014</span>
-          <span class="edu-badge">Score: 71%</span>
-          <span class="edu-badge">Post Graduate</span>
+
+        <div class="social-row reveal">
+          <a href="https://linkedin.com/in/alok-kumar-rathaur" target="_blank" rel="noopener" class="social-btn"
+            title="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/alokrathaur" target="_blank" rel="noopener" class="social-btn" title="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="mailto:alok.rathaur26@gmail.com" class="social-btn" title="Email">
+            <i class="fa-regular fa-envelope"></i>
+          </a>
+          <a href="tel:+917571868833" class="social-btn" title="Phone">
+            <i class="fa-solid fa-phone"></i>
+          </a>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-    <div class="contact-inner">
-      <div class="section-label" style="justify-content:center;">Get In Touch</div>
-      <h2 class="section-title reveal" style="margin:0 auto 1rem;">Let's build something <em>great</em></h2>
-      <p class="contact-desc reveal">I'm open to senior iOS roles, freelance projects, and interesting collaborations. Available to join immediately — let's talk.</p>
+  <!-- FOOTER -->
+  <footer>
+    <p>Designed &amp; built by <a href="mailto:alok.rathaur26@gmail.com">Alok Kumar Rathaur</a> &mdash; Senior iOS
+      Developer &mdash; Mumbai, India</p>
+    <p style="margin-top:.5rem;font-size:.72rem;color:var(--text3);">Swift &bull; SwiftUI &bull; MVVM &bull; Firebase
+      &bull; GitHub Actions</p>
+  </footer>
 
-      <div class="contact-cards reveal">
-        <a href="mailto:alok.rathaur26@gmail.com" class="contact-card">
-          <i class="fa-regular fa-envelope"></i>
-          <span class="cc-label">Email</span>
-          <span class="cc-val">alok.rathaur26@gmail.com</span>
-        </a>
-        <a href="tel:+917571868833" class="contact-card">
-          <i class="fa-solid fa-phone"></i>
-          <span class="cc-label">Phone</span>
-          <span class="cc-val">+91-7571868833</span>
-        </a>
-        <a href="#" class="contact-card">
-          <i class="fa-solid fa-location-dot"></i>
-          <span class="cc-label">Location</span>
-          <span class="cc-val">Mumbai, India</span>
-        </a>
-      </div>
-
-      <div class="social-row reveal">
-        <a href="https://linkedin.com/in/alok-kumar-rathaur" target="_blank" rel="noopener" class="social-btn" title="LinkedIn">
-          <i class="fa-brands fa-linkedin-in"></i>
-        </a>
-        <a href="https://github.com/alokrathaur" target="_blank" rel="noopener" class="social-btn" title="GitHub">
-          <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="mailto:alok.rathaur26@gmail.com" class="social-btn" title="Email">
-          <i class="fa-regular fa-envelope"></i>
-        </a>
-        <a href="tel:+917571868833" class="social-btn" title="Phone">
-          <i class="fa-solid fa-phone"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>Designed &amp; built by <a href="mailto:alok.rathaur26@gmail.com">Alok Kumar Rathaur</a> &mdash; Senior iOS Developer &mdash; Mumbai, India</p>
-  <p style="margin-top:.5rem;font-size:.72rem;color:var(--text3);">Swift &bull; SwiftUI &bull; MVVM &bull; Firebase &bull; GitHub Actions</p>
-</footer>
-
-<script>
-/* ── Mobile nav toggle ──────────────────────────────────────── */
-function toggleMenu() {
-  document.getElementById('mobile-nav').classList.toggle('open');
-}
-document.addEventListener('click', function(e) {
-  const nav = document.getElementById('mobile-nav');
-  const btn = document.getElementById('hamburger');
-  if (!nav.contains(e.target) && !btn.contains(e.target)) nav.classList.remove('open');
-});
-
-/* ── Sticky header shadow ───────────────────────────────────── */
-window.addEventListener('scroll', function() {
-  const h = document.getElementById('header');
-  if (window.scrollY > 40) h.style.background = 'rgba(8,12,20,0.95)';
-  else h.style.background = 'rgba(8,12,20,0.8)';
-});
-
-/* ── Scroll reveal ──────────────────────────────────────────── */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      // trigger skill bars inside
-      entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
-        bar.style.width = bar.dataset.width + '%';
-      });
-      observer.unobserve(entry.target);
+  <script>
+    /* ── Mobile nav toggle ──────────────────────────────────────── */
+    function toggleMenu() {
+      document.getElementById('mobile-nav').classList.toggle('open');
     }
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-/* Also trigger bars when their parent card becomes visible */
-document.querySelectorAll('.skill-card').forEach(card => {
-  const cardObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
-          setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 200);
-        });
-        cardObserver.unobserve(entry.target);
-      }
+    document.addEventListener('click', function (e) {
+      const nav = document.getElementById('mobile-nav');
+      const btn = document.getElementById('hamburger');
+      if (!nav.contains(e.target) && !btn.contains(e.target)) nav.classList.remove('open');
     });
-  }, { threshold: 0.2 });
-  cardObserver.observe(card);
-});
 
-/* ── Counter animation ──────────────────────────────────────── */
-function animateCounter(el, target, duration) {
-  let start = 0, startTime = null;
-  function step(timestamp) {
-    if (!startTime) startTime = timestamp;
-    const progress = Math.min((timestamp - startTime) / duration, 1);
-    const ease = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.floor(ease * target);
-    if (progress < 1) requestAnimationFrame(step);
-    else el.textContent = target;
-  }
-  requestAnimationFrame(step);
-}
+    /* ── Sticky header shadow ───────────────────────────────────── */
+    window.addEventListener('scroll', function () {
+      const h = document.getElementById('header');
+      if (window.scrollY > 40) h.style.background = 'rgba(8,12,20,0.95)';
+      else h.style.background = 'rgba(8,12,20,0.8)';
+    });
 
-const statsObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll('[data-target]').forEach(el => {
-        animateCounter(el, parseInt(el.dataset.target), 1500);
+    /* ── Scroll reveal ──────────────────────────────────────────── */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // trigger skill bars inside
+          entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+            bar.style.width = bar.dataset.width + '%';
+          });
+          observer.unobserve(entry.target);
+        }
       });
-      statsObserver.unobserve(entry.target);
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* Also trigger bars when their parent card becomes visible */
+    document.querySelectorAll('.skill-card').forEach(card => {
+      const cardObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+              setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 200);
+            });
+            cardObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      cardObserver.observe(card);
+    });
+
+    /* ── Counter animation ──────────────────────────────────────── */
+    function animateCounter(el, target, duration) {
+      let start = 0, startTime = null;
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(ease * target);
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(step);
     }
-  });
-}, { threshold: 0.5 });
 
-document.querySelectorAll('.stats-inner').forEach(el => statsObserver.observe(el));
+    const statsObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('[data-target]').forEach(el => {
+            animateCounter(el, parseInt(el.dataset.target), 1500);
+          });
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
 
-/* ── Active nav link on scroll ──────────────────────────────── */
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('nav a, .mobile-nav a');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(section => {
-    if (window.scrollY >= section.offsetTop - 100) current = section.getAttribute('id');
-  });
-  navLinks.forEach(link => {
-    link.style.color = '';
-    if (link.getAttribute('href') === '#' + current) link.style.color = 'var(--accent)';
-  });
-});
-</script>
+    document.querySelectorAll('.stats-inner').forEach(el => statsObserver.observe(el));
+
+    /* ── Active nav link on scroll ──────────────────────────────── */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a, .mobile-nav a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 100) current = section.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.style.color = '';
+        if (link.getAttribute('href') === '#' + current) link.style.color = 'var(--accent)';
+      });
+    });
+  </script>
 </body>
+
 </html>
