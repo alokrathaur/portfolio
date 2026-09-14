@@ -64,10 +64,10 @@ export const ContactFooter: React.FC = () => {
             </button>
 
             {/* Direct Resume Download */}
-            <a href="Alok_Kumar_Rathaur_Senior_iOS_Engineer_Resume.docx" download>
+            <a href="Alok_Kumar_Rathaur_Senior_iOS_Engineer_Resume.pdf" download>
               <Button variant="primary" size="md" className="font-semibold text-sm">
                 <Download className="w-4 h-4" />
-                <span>Download Resume (DOCX)</span>
+                <span>Download Resume (PDF)</span>
               </Button>
             </a>
           </div>

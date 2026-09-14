@@ -86,12 +86,12 @@ export const Navbar: React.FC = () => {
             <LinkedinIcon className="w-4 h-4" />
           </a>
           <a
-            href="Alok_Kumar_Rathaur_Senior_iOS_Engineer_Resume.docx"
+            href="Alok_Kumar_Rathaur_Senior_iOS_Engineer_Resume.pdf"
             download
             className="inline-flex items-center gap-2 text-xs font-medium bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 border border-sky-500/30 px-3.5 py-2 rounded-xl transition-all shadow-sm"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>Resume (DOCX)</span>
+            <span>Resume (PDF)</span>
           </a>
         </div>
 
@@ -120,12 +120,12 @@ export const Navbar: React.FC = () => {
           ))}
           <div className="pt-3 flex flex-col gap-2 border-t border-white/10">
             <a
-              href="Alok_Kumar_Rathaur_Senior_iOS_Engineer_Resume.docx"
+              href="Alok_Kumar_Rathaur_Senior_iOS_Engineer_Resume.pdf"
               download
               className="flex items-center justify-center gap-2 text-sm font-medium bg-sky-500 text-slate-950 px-4 py-2.5 rounded-xl shadow-md"
             >
               <Download className="w-4 h-4" />
-              <span>Download Resume (DOCX)</span>
+              <span>Download Resume (PDF)</span>
             </a>
           </div>
         </div>

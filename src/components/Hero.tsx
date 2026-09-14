@@ -73,10 +73,10 @@ export const Hero: React.FC = () => {
                 <span>Explore Personal Products</span>
               </Button>
             </a>
-            <a href="Alok_Kumar_Rathaur_Senior_iOS_Engineer_Resume.docx" download>
+            <a href="Alok_Kumar_Rathaur_Senior_iOS_Engineer_Resume.pdf" download>
               <Button size="lg" variant="secondary" className="font-semibold text-sm">
                 <Download className="w-4 h-4 text-sky-400" />
-                <span>Resume (DOCX)</span>
+                <span>Resume (PDF)</span>
               </Button>
             </a>
           </div>
