@@ -26,9 +26,17 @@ export const PersonalProjectsSection: React.FC = () => {
             <p className="font-semibold text-white mb-1">
               Independent Engineering & Product Lab (Nov 2025 – Present)
             </p>
-            <p className="text-zinc-400">
+            <p className="text-zinc-400 mb-3">
               Self-directed engineering initiative following Redpin tenure, architecting and shipping commercial-grade software across native Apple platforms (Swift 6, SwiftUI), real-time cross-platform multiplayer (iOS & Android), and SaaS.
             </p>
+            <div className="pt-2.5 border-t border-white/5 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-mono">
+              <span className="text-zinc-500 font-semibold uppercase tracking-wider text-[11px]">Total Shipped Track Record:</span>
+              <span className="text-cyan-400 font-medium">8 Mobile Apps (7 iOS • 1 Android)</span>
+              <span className="text-zinc-600">•</span>
+              <span className="text-purple-400 font-medium">1 Native Mac App</span>
+              <span className="text-zinc-600">•</span>
+              <span className="text-emerald-400 font-medium">4 Web & SaaS Platforms</span>
+            </div>
           </div>
         </div>
 

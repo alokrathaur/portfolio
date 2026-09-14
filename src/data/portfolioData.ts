@@ -333,13 +333,13 @@ export const portfolioData = {
       companyUrl: "https://apps.apple.com/us/app/tap2health/id6446981899",
       location: "Bangalore, India (Remote)",
       period: "Apr 2022 – Nov 2022",
-      tagline: "Telehealth & Doctor Consultation iOS Platform",
+      tagline: "Telehealth & Doctor Consultation iOS Platform (Doctor & Patient App Ecosystem)",
       badge: "Telehealth Platform",
       logo: "tap2health.png",
       bulletPoints: [
         {
           topic: "Virtual Healthcare Consultations",
-          text: "Built the doctor-facing iOS app supporting real-time virtual consultations via WebSockets, multi-mode video/voice/chat, and configurable schedule management."
+          text: "Built the doctor-facing iOS app supporting real-time virtual consultations via WebSockets, multi-mode video/voice/chat, and configurable schedule management alongside patient appointment mobile workflows."
         },
         {
           topic: "Digital Signatures & e-Prescriptions",

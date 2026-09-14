@@ -33,6 +33,27 @@ export const Hero: React.FC = () => {
             I am <strong className="text-white font-semibold">{portfolioData.personal.name}</strong>, a Senior iOS Engineer with 8.3+ years of software engineering experience (7+ years native Apple ecosystem) architecting, developing, and deploying high-impact iOS and macOS applications across Fintech, Consumer E-Commerce, and Telehealth. Specializing in Swift 6, SwiftUI, Swift Concurrency, MVVM-C, and enterprise payment SDKs.
           </p>
 
+          {/* Shipped Products Platform Breakdown Pill Banner (Option A) */}
+          <div className="inline-flex flex-wrap items-center justify-center gap-x-5 gap-y-2 px-5 py-2.5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md text-xs sm:text-sm font-medium text-zinc-300 shadow-xl shadow-black/40 mb-8 max-w-2xl mx-auto">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+              <strong className="text-white font-semibold">8 Mobile Apps</strong>
+              <span className="text-zinc-400 text-xs font-mono">(7 iOS • 1 Android)</span>
+            </div>
+            <span className="hidden sm:inline text-zinc-600">•</span>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-purple-400" />
+              <strong className="text-white font-semibold">1 Mac App</strong>
+              <span className="text-zinc-400 text-xs font-mono">(Native Swift 6)</span>
+            </div>
+            <span className="hidden sm:inline text-zinc-600">•</span>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400" />
+              <strong className="text-white font-semibold">4 Web Apps</strong>
+              <span className="text-zinc-400 text-xs font-mono">(SaaS & Cloud)</span>
+            </div>
+          </div>
+
           {/* Location & Relocation */}
           <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-zinc-400 font-mono mb-10">
             <MapPin className="w-4 h-4 text-sky-400" />
