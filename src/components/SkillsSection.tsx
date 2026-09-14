@@ -52,7 +52,7 @@ export const SkillsSection: React.FC = () => {
             Core Technical Skills
           </h2>
           <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">
-            Engineered through 7.7+ years of building production applications, enterprise fintech platforms, and commercial apps.
+            Engineered through 8.3+ years of building production applications, enterprise fintech platforms, and commercial apps.
           </p>
         </div>
 

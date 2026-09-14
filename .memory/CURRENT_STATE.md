@@ -12,7 +12,7 @@
     - Tailored shadcn/ui atoms (`Card`, `Badge`, `Button`).
   - **Data Integrity & Resume Alignment**:
     - Fully updated to match `Alok_Kumar_Rathaur_Senior_iOS_Engineer_Resume.docx`.
-    - 6 Hero Proof Stats (7.7+ Yrs Exp, 6+ Apple Native, $70M+ Transaction Volume, 4.8★ App Store Rating, 40+ Concurrency Modules, 14 Apps Shipped).
+    - 6 Hero Proof Stats (8.3+ Yrs Exp, 7+ Apple Native, $70M+ Transaction Volume, 4.8★ App Store Rating, 40+ Concurrency Modules, 14 Apps Shipped).
     - 10 Technical Skill Clusters.
     - 7 Professional Roles with authentic company logos and official App Store/live links.
     - 4 Key Personal Projects (MacMint, TopBump, DotMesh, TinyOrbit URL) with explicit engineering preamble and all external product/store links.

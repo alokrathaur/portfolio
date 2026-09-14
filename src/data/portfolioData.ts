@@ -61,7 +61,7 @@ export const portfolioData = {
     name: "Alok Kumar Rathaur",
     role: "Senior iOS Engineer & Apple Platform Architect",
     tagline: "Building high-performance iOS, macOS, and cross-platform applications with Swift 6, SwiftUI, and modern concurrency.",
-    bio: "Senior iOS Engineer with 7.7+ years of professional software engineering experience (6+ years dedicated native Apple ecosystem) architecting, developing, and deploying high-impact iOS and macOS applications across Fintech, Consumer E-Commerce, and Telehealth. Deep expertise in modern Swift (5/6), UIKit, SwiftUI, Swift Concurrency (async/await, Actors), Core Data, Combine, and enterprise Payment SDKs. Proven track record implementing MVVM-C, Clean Architecture, VIPER, and TCA, delivering measurable production improvements including 35% crash rate reductions and 30% faster cold launch times.",
+    bio: "Senior iOS Engineer with 8.3+ years of software engineering experience (7+ years native Apple ecosystem) architecting, developing, and deploying high-impact iOS and macOS applications across Fintech, Consumer E-Commerce, and Telehealth. Deep expertise in modern Swift (5/6), UIKit, SwiftUI, Swift Concurrency (async/await, Actors), Core Data, Combine, and enterprise Payment SDKs. Proven track record implementing MVVM-C, Clean Architecture, VIPER, and TCA, delivering measurable production improvements including 35% crash rate reductions and 30% faster cold launch times.",
     location: "Kanpur, India • Open to Relocation / Hybrid / Remote",
     email: "alok.rathaur26@gmail.com",
     phone: "+91-7571868833",
@@ -92,9 +92,9 @@ export const portfolioData = {
 
   stats: [
     {
-      value: "7.7+",
+      value: "8.3+",
       label: "Years Experience",
-      description: "6+ years dedicated native Apple platforms"
+      description: "7+ years dedicated native Apple platforms"
     },
     {
       value: "35%",

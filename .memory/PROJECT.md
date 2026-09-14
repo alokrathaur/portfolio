@@ -3,7 +3,7 @@
 - **Project Name**: Alok Kumar Rathaur — Senior iOS Engineer & Apple Platform Architect Portfolio
 - **Location**: `/Users/alok/Documents/Dev Workspace/GitHub-ALL/portfolio`
 - **Owner**: Alok Kumar Rathaur (Senior iOS Developer & Mobile Solutions Architect)
-- **Core Experience**: 7.7+ years total software engineering experience (6+ years specialized in the native Apple ecosystem — iOS, macOS, watchOS).
+- **Core Experience**: 8.3+ years total software engineering experience (7+ years specialized in the native Apple ecosystem — iOS, macOS, watchOS).
 - **Core Tech Focus**: Swift 6, SwiftUI, Swift Concurrency (async/await, Actors, Sendable), MVVM-C, Combine, UIKit, CoreData/SwiftData, Enterprise Payment Gateways (Apple Pay, Stripe, Dodo Payments, Cashfree, Razorpay, 3D Secure / PSD2), Security & Keychain, XCTest.
 - **Technology Stack**:
   - Vite 8.3 + React 19 + TypeScript 7

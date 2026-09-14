@@ -30,7 +30,7 @@ export const Hero: React.FC = () => {
 
           {/* Subtitle */}
           <p className="text-base sm:text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed mb-8">
-            I am <strong className="text-white font-semibold">{portfolioData.personal.name}</strong>, a Senior iOS Engineer with 7.7+ years of experience (6+ native iOS) delivering high-scale consumer and fintech applications. Specializing in Swift 6, SwiftUI, Swift Concurrency, MVVM-C, and enterprise payment SDKs.
+            I am <strong className="text-white font-semibold">{portfolioData.personal.name}</strong>, a Senior iOS Engineer with 8.3+ years of software engineering experience (7+ years native Apple ecosystem) architecting, developing, and deploying high-impact iOS and macOS applications across Fintech, Consumer E-Commerce, and Telehealth. Specializing in Swift 6, SwiftUI, Swift Concurrency, MVVM-C, and enterprise payment SDKs.
           </p>
 
           {/* Location & Relocation */}
