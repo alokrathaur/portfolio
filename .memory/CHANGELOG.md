@@ -13,4 +13,5 @@
 - Direct resume download buttons for `Alok_Kumar_Rathaur_Senior_iOS_Engineer_Resume.pdf` (replaced DOCX with 4-page PDF version).
 - Added Shipped Apps Breakdown banner in Hero ("Mobile Apps Shipped: 8 (7 iOS, 1 Android) • Web Apps: 4 • macOS: 1") and preamble track record clarification in Personal Projects.
 - Updated official OpenGraph banner (`og-image.jpg`) showcasing apps breakdown and performance metrics.
+- Added official App Store (Apple) and Google Play store icons to all relevant store link buttons across Personal Projects and Commercial Experience cards.
 - Dedicated `.memory/` folder for persistent architectural context and decisions.
