@@ -6,6 +6,7 @@ import {
   Rocket, 
   ArrowUpRight 
 } from "lucide-react";
+import { AppleIcon, PlayStoreIcon } from "@/components/Icons";
 
 export const PersonalProjectsSection: React.FC = () => {
   return (
@@ -122,10 +123,11 @@ export const PersonalProjectsSection: React.FC = () => {
                     href={project.appStoreUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-2 rounded-xl bg-white/10 text-white hover:bg-white/20 border border-white/15 transition-colors"
+                    className="inline-flex items-center gap-2 text-xs font-semibold px-3.5 py-2 rounded-xl bg-white/10 text-white hover:bg-white/20 border border-white/15 transition-all group shadow-sm"
                   >
+                    <AppleIcon className="w-3.5 h-3.5 fill-current text-white group-hover:scale-110 transition-transform" />
                     <span>App Store</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-white transition-colors" />
                   </a>
                 )}
 
@@ -134,10 +136,11 @@ export const PersonalProjectsSection: React.FC = () => {
                     href={project.googlePlayUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-2 rounded-xl bg-white/10 text-white hover:bg-white/20 border border-white/15 transition-colors"
+                    className="inline-flex items-center gap-2 text-xs font-semibold px-3.5 py-2 rounded-xl bg-white/10 text-white hover:bg-white/20 border border-white/15 transition-all group shadow-sm"
                   >
+                    <PlayStoreIcon className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
                     <span>Google Play</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-white transition-colors" />
                   </a>
                 )}
 

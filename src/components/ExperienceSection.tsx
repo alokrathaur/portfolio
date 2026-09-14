@@ -8,6 +8,7 @@ import {
   MapPin, 
   Briefcase
 } from "lucide-react";
+import { AppleIcon, PlayStoreIcon } from "@/components/Icons";
 
 export const ExperienceSection: React.FC = () => {
   return (
@@ -108,10 +109,19 @@ export const ExperienceSection: React.FC = () => {
                         href={exp.companyUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-medium text-sky-400 hover:text-sky-300 transition-colors border-b border-sky-400/30 hover:border-sky-400 pb-0.5"
+                        className="inline-flex items-center gap-1.5 text-xs font-medium text-sky-400 hover:text-sky-300 transition-colors border-b border-sky-400/30 hover:border-sky-400 pb-0.5 group"
                       >
+                        {exp.companyUrl.includes("apps.apple.com") ? (
+                          <AppleIcon className="w-3.5 h-3.5 fill-current text-white/90 group-hover:scale-110 transition-transform" />
+                        ) : exp.companyUrl.includes("play.google.com") ? (
+                          <PlayStoreIcon className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
+                        ) : null}
                         <span>
-                          {exp.companyUrl.includes("apps.apple.com") ? "View on App Store" : "Visit Website"}
+                          {exp.companyUrl.includes("apps.apple.com")
+                            ? "View on App Store"
+                            : exp.companyUrl.includes("play.google.com")
+                            ? "View on Google Play"
+                            : "Visit Website"}
                         </span>
                         <ExternalLink className="w-3.5 h-3.5" />
                       </a>
